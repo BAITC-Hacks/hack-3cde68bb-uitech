@@ -1,6 +1,7 @@
 package kz.uitech;
 
 import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.openxml4j.opc.PackageAccess;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
 import org.apache.poi.xssf.model.SharedStrings;
 import org.apache.poi.util.XMLHelper;
@@ -8,6 +9,7 @@ import org.apache.poi.ss.util.CellReference;
 import org.xml.sax.*;
 import org.xml.sax.helpers.DefaultHandler;
 import java.io.*;
+import java.nio.file.*;
 import java.util.*;
 import java.util.function.Consumer;
 
@@ -15,7 +17,16 @@ import java.util.function.Consumer;
 public final class XlsxReader {
     public record Row(int number,Map<Integer,String> values) {public String cell(int column){return values.get(column);}}
     public void read(byte[] bytes,String sheetName,Consumer<Row> consume) {
-        try(OPCPackage pkg=OPCPackage.open(new ByteArrayInputStream(bytes))) {
+        // Opening an InputStream makes POI inflate all ZIP entries into heap, even with SAX.
+        // A read-only file package keeps large worksheet XML streamed from the compressed file.
+        Path temp;
+        try{temp=Files.createTempFile("uitech-xlsx-",".xlsx");}catch(IOException e){throw new IllegalStateException(e);}
+        try{Files.write(temp,bytes);readFile(temp,sheetName,consume);}
+        catch(IOException e){throw new IllegalStateException(e);}
+        finally{try{Files.deleteIfExists(temp);}catch(IOException e){throw new IllegalStateException(e);}}
+    }
+    private void readFile(Path file,String sheetName,Consumer<Row> consume) {
+        try(OPCPackage pkg=OPCPackage.open(file.toFile(),PackageAccess.READ)) {
             XSSFReader reader=new XSSFReader(pkg);SharedStrings shared=reader.getSharedStringsTable();
             XSSFReader.SheetIterator it=(XSSFReader.SheetIterator)reader.getSheetsData();
             while(it.hasNext())try(InputStream sheet=it.next()) {

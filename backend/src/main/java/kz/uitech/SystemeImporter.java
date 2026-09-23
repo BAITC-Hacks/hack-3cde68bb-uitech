@@ -111,7 +111,7 @@ public class SystemeImporter {
         issues.add(issue("LEGACY_FORMULA_13_MONTHS","warning",null,"В исходном TDSheet AP суммирует 13 месяцев, AQ делит на 12. Эти итоги не используются в прогнозе.",List.of(new Ref("systeme_inventory_transit","TDSheet","AP3:AQ3"))));
         issues.add(issue("SEASONAL_PROFILE_INTERPRETATION","warning",null,"Профиль поставщика L11:L22 переведён в относительную дневную скорость по длинам месяцев 2025 года; единицы исходного показателя и применимость к SKU требуют проверки. Не использовать этот профиль для исторического backtest до даты его формирования.",List.of(new Ref("systeme_seasonality","Лист1","L11:L22"))));
         List<InboundCoverage> inboundCoverage=transitProducts.stream().sorted().map(pid->new InboundCoverage(pid,WAREHOUSE,SNAPSHOT,false)).toList();
-        return new Dataset("1.0",manifest.name(),"real",manifest.timezone(),List.of(new Supplier(SUPPLIER,"Systeme Electric")),items.values().stream().map(Item::product).toList(),coverage,sales,inventory,inbound,inboundCoverage,List.of(),seasonality,sources,issues,monthlySales,monthlyStock);
+        return new Dataset("1.0",manifest.name(),"real",manifest.timezone(),List.of(new Supplier(SUPPLIER,"Systeme Electric")),items.values().stream().map(Item::product).toList(),coverage,sales,inventory,inbound,inboundCoverage,List.of(),seasonality,sources,issues,monthlySales,monthlyStock,List.of(),List.of());
     }
     private Item get(Map<String,Item> items,String code,String name) {
         return items.computeIfAbsent(code,k->{Item p=new Item();p.id=id(k);p.code=k;p.name=name==null?k:clean(name);return p;});

@@ -7,7 +7,7 @@ const roles = [
   ['sales_monthly', 'Продажи по месяцам', 'Ежемесячные продажи'],
   ['stock_monthly', 'Остатки по месяцам', 'Ежемесячные остатки'],
   ['inventory_transit', 'Остаток и товары в пути', 'Товар в пути'],
-  ['moq', 'Кратность закупки', 'MOQ'],
+  ['moq', 'Минимум / кратность закупки', 'MOQ'],
   ['seasonality', 'Сезонность', 'Сезонность'],
 ];
 export default function Upload({
@@ -22,11 +22,12 @@ export default function Upload({
   const [files, setFiles] = useState<{ file: File; role: string }[]>([]);
   const [error, setError] = useState('');
   const [name, setName] = useState('Systeme Electric');
+  const [supplier, setSupplier] = useState('SYSTEME');
   async function json(file: File | undefined) {
     if (!file) return;
     setError('');
     try {
-      if (file.size > 60 * 1024 * 1024) throw new Error('Максимальный размер JSON — 60 МБ.');
+      if (file.size > 150 * 1024 * 1024) throw new Error('Максимальный размер JSON — 150 МБ.');
       const value = JSON.parse(await file.text());
       const d = value.dataset || value;
       if (!d.schema_version || !Array.isArray(d.products))
@@ -40,9 +41,28 @@ export default function Upload({
     <div className="modal-body">
       <fieldset disabled={busy}>
         <p className="muted">
-          Systeme Electric · выберите шесть XLSX из распакованного архива. Исходные файлы сохранятся
-          без изменений.
+          Выберите поставщика и шесть XLSX из распакованного архива. Исходные файлы не изменяются.
         </p>
+        <label>
+          Поставщик файлов
+          <select
+            value={supplier}
+            onChange={(e) => {
+              setSupplier(e.target.value);
+              if (name === 'Systeme Electric' || name === 'IEK')
+                setName(e.target.value === 'IEK' ? 'IEK' : 'Systeme Electric');
+            }}
+          >
+            <option value="SYSTEME">Systeme Electric</option>
+            <option value="IEK">IEK</option>
+          </select>
+        </label>
+        {supplier === 'IEK' && (
+          <p className="notice amber">
+            В архиве IEK нет актуального остатка. Количества партий и сроки «поступление до»
+            сохранятся для уточнения единиц; в расчёт заказа они пока не входят.
+          </p>
+        )}
         <label className="dropzone">
           <span className="upload-symbol">
             <Icon name="upload" size={26} />
@@ -59,7 +79,9 @@ export default function Upload({
               setFiles(
                 Array.from(e.target.files || []).map((file) => ({
                   file,
-                  role: roles.find((r) => file.name.startsWith(r[2]))?.[0] || '',
+                  role:
+                    roles.find((r) => file.name.startsWith(r[2]))?.[0] ||
+                    (file.name.startsWith('Путь') ? 'inventory_transit' : ''),
                 })),
               );
             }}
@@ -90,7 +112,7 @@ export default function Upload({
                   timezone: 'Asia/Almaty',
                   files: files.map((f) => ({
                     part_name: f.role,
-                    supplier_id: 'SYSTEME',
+                    supplier_id: supplier,
                     role: f.role,
                   })),
                 }),

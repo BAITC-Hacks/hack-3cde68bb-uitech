@@ -44,6 +44,24 @@ export interface Dataset {
   }[];
   sources: { source_id: string; file_name: string | null; role: string; note: string }[];
   issues: Issue[];
+  reported_inbound?: {
+    source_row_id: string;
+    product_id: string;
+    reported_quantity: number;
+    unit: string | null;
+    arrival_deadline: string | null;
+    shipment_label: string;
+    source_refs: Ref[];
+  }[];
+  reported_purchase_rules?: {
+    source_row_id: string;
+    product_id: string;
+    rule_label: string;
+    raw_value: string | null;
+    reported_quantity: number | null;
+    unit: string | null;
+    source_refs: Ref[];
+  }[];
 }
 export interface Summary {
   dataset_id: string;

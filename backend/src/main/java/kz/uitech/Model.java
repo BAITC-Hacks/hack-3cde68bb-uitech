@@ -6,6 +6,7 @@ import java.time.YearMonth;
 import java.util.List;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 public final class Model {
     private Model() {}
@@ -43,20 +44,36 @@ public final class Model {
     }
     public record MonthlyValue(String productId, String warehouseId, YearMonth month, BigDecimal quantity,
                                String meaning, List<Ref> sourceRefs) { public MonthlyValue { sourceRefs = list(sourceRefs); } }
+    public record ReportedInbound(String sourceRowId, String productId, BigDecimal reportedQuantity,
+                                  String unit, LocalDate arrivalDeadline, String shipmentLabel,
+                                  List<Ref> sourceRefs) { public ReportedInbound { sourceRefs = list(sourceRefs); } }
+    public record ReportedPurchaseRule(String sourceRowId, String productId, String ruleLabel,
+                                      String rawValue, BigDecimal reportedQuantity, String unit,
+                                      List<Ref> sourceRefs) { public ReportedPurchaseRule { sourceRefs = list(sourceRefs); } }
     public record Dataset(String schemaVersion, String name, String dataKind, String timezone,
                           List<Supplier> suppliers, List<Product> products, List<Coverage> salesCoverage,
                           List<Sale> sales, List<Inventory> inventory, List<Inbound> inbound,
                           List<InboundCoverage> inboundCoverage, List<Availability> availability,
                           List<Seasonality> seasonalityProfiles, List<Source> sources, List<Issue> issues,
-                          List<MonthlyValue> monthlySales, List<MonthlyValue> monthlyStock) {
+                          List<MonthlyValue> monthlySales, List<MonthlyValue> monthlyStock,
+                          @JsonInclude(JsonInclude.Include.NON_EMPTY) List<ReportedInbound> reportedInbound,
+                          @JsonInclude(JsonInclude.Include.NON_EMPTY) List<ReportedPurchaseRule> reportedPurchaseRules) {
         public Dataset {
             suppliers=list(suppliers); products=list(products); salesCoverage=list(salesCoverage); sales=list(sales);
             inventory=list(inventory); inbound=list(inbound); inboundCoverage=list(inboundCoverage);
             availability=list(availability); seasonalityProfiles=list(seasonalityProfiles);
             sources=list(sources); issues=list(issues); monthlySales=list(monthlySales); monthlyStock=list(monthlyStock);
+            reportedInbound=list(reportedInbound); reportedPurchaseRules=list(reportedPurchaseRules);
         }
     }
     public record SupplierPolicy(String supplierId, Integer leadTimeDays, Integer reviewPeriodDays) {}
+    public record DatasetReview(String schemaVersion,String name,String dataKind,String timezone,
+                                List<Supplier> suppliers,List<Product> products,List<Inventory> inventory,
+                                List<Coverage> salesCoverage,List<Source> sources,List<Issue> issues,
+                                List<ReportedInbound> reportedInbound,List<ReportedPurchaseRule> reportedPurchaseRules) {
+        public static DatasetReview from(Dataset d){return new DatasetReview(d.schemaVersion(),d.name(),d.dataKind(),d.timezone(),
+                d.suppliers(),d.products(),d.inventory(),d.salesCoverage(),d.sources(),d.issues(),d.reportedInbound(),d.reportedPurchaseRules());}
+    }
     public record CategoryPolicy(String categoryId, Integer safetyDays, Boolean purchasingAllowed) {}
     public record ForecastConfig(String seasonalityMode, String growthMode, BigDecimal manualGrowthPct,
                                  String outlierPolicy, String stockoutMode) {}

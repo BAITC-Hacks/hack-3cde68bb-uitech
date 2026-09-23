@@ -46,6 +46,18 @@ public final class Validation {
         for(Inventory i:d.inventory()) { require(products.contains(i.productId()),"Неизвестный товар остатка");text(i.warehouseId(),"warehouse_id");require(i.asOf()!=null,"Дата остатка обязательна"); }
         unique(d.inbound(),Inbound::shipmentId,"shipment_id");
         for(Inbound i:d.inbound()) { require(products.contains(i.productId()),"Неизвестный товар поставки");text(i.warehouseId(),"warehouse_id");number(i.quantity(),"inbound quantity",false);require(Set.of("confirmed","unconfirmed").contains(Objects.toString(i.status(),"")),"Статус поставки не поддерживается"); }
+        unique(d.reportedInbound(),ReportedInbound::sourceRowId,"reported inbound source_row_id");
+        for(ReportedInbound i:d.reportedInbound()) {
+            require(products.contains(i.productId()),"Неизвестный товар исходной партии");
+            require(i.reportedQuantity()!=null,"Исходное количество партии обязательно");number(i.reportedQuantity().abs(),"reported quantity",true);
+            text(i.shipmentLabel(),"shipment_label");require(!i.sourceRefs().isEmpty(),"Нужен источник исходной партии");
+        }
+        unique(d.reportedPurchaseRules(),ReportedPurchaseRule::sourceRowId,"reported purchase rule source_row_id");
+        for(ReportedPurchaseRule r:d.reportedPurchaseRules()) {
+            require(products.contains(r.productId()),"Неизвестный товар исходного правила закупки");text(r.ruleLabel(),"rule_label");
+            if(r.reportedQuantity()!=null)number(r.reportedQuantity().abs(),"reported purchase quantity",true);
+            require(!r.sourceRefs().isEmpty(),"Нужен источник правила закупки");
+        }
         for(Coverage c:d.salesCoverage()) { require(products.contains(c.productId()),"Неизвестный товар coverage");text(c.warehouseId(),"warehouse_id");interval(c.startDate(),c.endDateExclusive()); }
         unique(d.inboundCoverage(),c->c.productId()+"|"+c.warehouseId()+"|"+c.asOf(),"inbound coverage");
         for(InboundCoverage c:d.inboundCoverage()) { require(products.contains(c.productId()),"Неизвестный товар inbound coverage");text(c.warehouseId(),"warehouse_id");require(c.asOf()!=null,"Дата inbound coverage обязательна"); }

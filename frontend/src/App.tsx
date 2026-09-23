@@ -139,7 +139,7 @@ export default function App() {
     setPage(0);
   }
   async function loadDataset(id: string, config?: Params, result?: Calculation) {
-    const data = await api<Dataset>(`/datasets/${encodeURIComponent(id)}/data`);
+    const data = await api<Dataset>(`/datasets/${encodeURIComponent(id)}/review`);
     setDataset(data);
     setDatasetId(id);
     setParams(config ? { ...config, dataset_id: id } : initialParams(data, id));
@@ -921,6 +921,59 @@ export default function App() {
                 </div>
               ))}
             </div>
+            {!!dataset.reported_inbound?.length && (
+              <details className="quality-detail">
+                <summary>
+                  <strong>Исходные партии IEK</strong>
+                  <span>{fmt(dataset.reported_inbound.length)}</span>
+                </summary>
+                <p>
+                  Первые 20 записей. Количества сохранены в единицах источника, которые нужно
+                  уточнить. Срок «поступление до» — крайняя дата, а не подтверждённый день приёмки.
+                  Эти записи не уменьшают заказ.
+                </p>
+                <ul>
+                  {dataset.reported_inbound.slice(0, 20).map((r) => (
+                    <li key={r.source_row_id}>
+                      <strong>
+                        {r.product_id}: {fmt(r.reported_quantity)} ·{' '}
+                        {r.unit || 'единица не уточнена'}
+                      </strong>
+                      <p>{r.shipment_label}</p>
+                      {r.source_refs.map((ref, i) => (
+                        <small key={i}>
+                          {ref.sheet} {ref.cell_range}
+                        </small>
+                      ))}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
+            {!!dataset.reported_purchase_rules?.length && (
+              <details className="quality-detail">
+                <summary>
+                  <strong>Исходные ограничения отгрузки</strong>
+                  <span>{fmt(dataset.reported_purchase_rules.length)}</span>
+                </summary>
+                <p>
+                  Первые 20 записей. Минимум заказа, кратность и единицу закупки нужно подтвердить
+                  отдельно.
+                </p>
+                <ul>
+                  {dataset.reported_purchase_rules.slice(0, 20).map((r) => (
+                    <li key={r.source_row_id}>
+                      {r.product_id} · {r.rule_label}: {r.raw_value ?? 'пусто'}
+                      {r.source_refs.map((ref, i) => (
+                        <small key={i}>
+                          {ref.sheet} {ref.cell_range}
+                        </small>
+                      ))}
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            )}
             <h3>Замечания по типам</h3>
             {issueGroups.length ? (
               issueGroups.map(([code, issue]) => (

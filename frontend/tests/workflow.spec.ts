@@ -132,3 +132,36 @@ test('real Excel import exposes source quality without inventing a recommendatio
     page.getByRole('dialog').getByText('MONTHLY_SALES_MISMATCH', { exact: true }),
   ).toBeVisible();
 });
+
+test('real IEK import preserves unverified batches and explains missing stock', async ({
+  page,
+}) => {
+  test.setTimeout(120000);
+  const dir = process.env.UITECH_IEK_XLSX_DIR;
+  test.skip(!dir, 'Set UITECH_IEK_XLSX_DIR to six extracted IEK XLSX files');
+  const files = (await readdir(dir!))
+    .filter((n) => n.endsWith('.xlsx'))
+    .map((n) => path.join(dir!, n));
+  await page.goto('/');
+  await expect(page.getByText('Локальный сервер подключён')).toBeVisible();
+  await page.getByRole('button', { name: 'Загрузить данные', exact: true }).click();
+  await page.getByRole('combobox', { name: 'Поставщик файлов', exact: true }).selectOption('IEK');
+  await expect(page.getByText(/В архиве IEK нет актуального остатка/)).toBeVisible();
+  await page.getByLabel('Выбрать Excel-файлы', { exact: true }).setInputFiles(files);
+  await expect(page.getByRole('combobox', { name: /^Роль файла Путь/ })).toHaveValue(
+    'inventory_transit',
+  );
+  await page.getByLabel('Название набора').fill('IEK 22.09.2026');
+  await page.getByRole('button', { name: 'Импортировать 6 файлов' }).click();
+  await expect(
+    page.getByText('Набор сохранён. Проверьте качество данных перед расчётом.'),
+  ).toBeVisible({ timeout: 90000 });
+  await expect(page.getByRole('heading', { name: 'Рекомендации к закупке' })).toHaveCount(0);
+  await page.getByRole('button', { name: 'Качество данных', exact: true }).click();
+  const dialog = page.getByRole('dialog');
+  await expect(dialog.getByText('CURRENT_STOCK_UNAVAILABLE', { exact: true })).toBeVisible();
+  await dialog.getByText('Исходные партии IEK', { exact: true }).click();
+  await expect(dialog.getByText(/Эти записи не уменьшают заказ/)).toBeVisible();
+  await expect(dialog.getByText(/единица не уточнена/).first()).toBeVisible();
+  await expect(dialog.getByText(/поступление до/).last()).toBeVisible();
+});

@@ -1,7 +1,7 @@
 # Frontend
 
 - React, TypeScript, Vite. `npm ci`, `npm run dev`, `npm run build`.
-- E2E: при запущенных backend/frontend `npm run test:e2e` (Edge; другой канал через PLAYWRIGHT_CHANNEL). Реальный импорт — с UITECH_XLSX_DIR. Форматирование: `npm run format`.
+- E2E: при запущенных backend/frontend `npm run test:e2e` (Edge; другой канал через PLAYWRIGHT_CHANNEL). Реальный импорт — с UITECH_XLSX_DIR (Systeme) и UITECH_IEK_XLSX_DIR (IEK). Форматирование: `npm run format`.
 - `/api` проксируется в backend на 127.0.0.1:8080; адрес можно задать через BACKEND_URL.
 - Русский интерфейс. Реальные и синтетические данные явно различать.
 - Количества рассчитывает backend. Не заменять неизвестные значения нулями и не суммировать разные единицы в KPI.

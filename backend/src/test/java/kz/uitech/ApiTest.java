@@ -34,6 +34,8 @@ class ApiTest {
         JsonNode catalog=mapper.readTree(mvc.perform(get("/api/v1/datasets")).andExpect(status().isOk()).andReturn().getResponse().getContentAsByteArray());
         assertTrue(catalog.isArray());assertTrue(java.util.stream.StreamSupport.stream(catalog.spliterator(),false).anyMatch(d->d.path("dataset_id").equals(c.get("dataset_id"))));
         assertFalse(catalog.get(0).has("sales"));
+        JsonNode review=mapper.readTree(mvc.perform(get("/api/v1/datasets/"+c.path("dataset_id").asText()+"/review")).andExpect(status().isOk()).andReturn().getResponse().getContentAsByteArray());
+        assertFalse(review.has("sales"));assertFalse(review.has("monthly_stock"));assertEquals("P1",review.path("products").get(0).path("product_id").asText());
         mvc.perform(get(base+"/export?supplier_id=SUP_A&format=csv&revision=1")).andExpect(status().isConflict());
         postJson(base+"/approve",approval(1),200);
         String csv=mvc.perform(get(base+"/export?supplier_id=SUP_A&format=csv&revision=1")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);assertTrue(csv.contains("\"150\";\"150\""));
@@ -46,8 +48,18 @@ class ApiTest {
         postJson(base+"/approve",approval(2),200);
         LocalStore reopened=new LocalStore(mapper,DATA.toString());assertEquals("APPROVED",reopened.calculation(id).path("status").asText());assertTrue(reopened.csv(id,"SUP_A",2).contains("\"150\";\"160\""));
         assertEquals("000001_",reopened.dataset(c.path("dataset_id").asText()).products().get(0).sku1c());
+        var original=reopened.dataset(c.path("dataset_id").asText());assertEquals("ds_"+LocalStore.hash(mapper.writeValueAsBytes(original)),c.path("dataset_id").asText());
+        assertTrue(reopened.putDataset(original).path("reused").asBoolean());
     }
     @Test void missingStockCannotBeApproved()throws Exception {ObjectNode c=create("14_missing_stock");postJson("/api/v1/calculations/"+c.path("calculation_id").asText()+"/approve",approval(1),422);}
     @Test void invalidPayloadReturnsStructuredError()throws Exception {mvc.perform(post("/api/v1/datasets").contentType(MediaType.APPLICATION_JSON).content("{\"unexpected\":true}")).andExpect(status().isBadRequest()).andExpect(jsonPath("$.error.code").exists());}
     @Test void csvProtectsFormulaValues(){assertEquals("\"'=SUM(A1)\"",LocalStore.escape("=SUM(A1)"));assertEquals("\"a\"\"b;c\"",LocalStore.escape("a\"b;c"));}
+    @Test void importRoutesIekAndRejectsMixedSuppliers()throws Exception {
+        var files=IekImporterTest.files();var manifest=IekImporterTest.manifest(files.keySet());
+        var request=multipart("/api/v1/datasets/import");request.param("manifest",mapper.writeValueAsString(manifest));
+        for(var entry:files.entrySet())request.file(new org.springframework.mock.web.MockMultipartFile(entry.getKey(),entry.getValue().name(),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",entry.getValue().bytes()));
+        mvc.perform(request).andExpect(status().isCreated()).andExpect(jsonPath("$.counts.reported_inbound").value(3)).andExpect(jsonPath("$.counts.inbound").value(0));
+        ObjectNode mixed=mapper.valueToTree(manifest);((ObjectNode)mixed.withArray("files").get(0)).put("supplier_id","SYSTEME");
+        mvc.perform(multipart("/api/v1/datasets/import").param("manifest",mapper.writeValueAsString(mixed))).andExpect(status().isUnprocessableEntity());
+    }
 }

@@ -26,13 +26,19 @@ public class LocalStore {
         try{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(bytes));}catch(Exception e){throw new IllegalStateException(e);}
     }
     public synchronized ObjectNode putDataset(Dataset d) throws IOException {
-        Validation.dataset(d);String id="ds_"+hash(mapper.writeValueAsBytes(d));boolean exists=Files.exists(path(id));
-        if(!exists)write(id,mapper.valueToTree(d));datasets.put(id,d);
+        Validation.dataset(d);MessageDigest digest;
+        try{digest=MessageDigest.getInstance("SHA-256");}catch(java.security.NoSuchAlgorithmException e){throw new IllegalStateException(e);}
+        try(var out=new java.security.DigestOutputStream(java.io.OutputStream.nullOutputStream(),digest)){mapper.writeValue(out,d);}
+        String id="ds_"+HexFormat.of().formatHex(digest.digest());boolean exists=Files.exists(path(id));
+        if(!exists)write(id,d);datasets.put(id,d);
         ObjectNode result=summary(id,d);result.put("reused",exists);return result;
     }
     public Dataset dataset(String id) {
         validateId(id,"ds_");
-        return datasets.computeIfAbsent(id,k->{try{return mapper.treeToValue(read(k),Dataset.class);}catch(IOException e){throw new IllegalStateException(e);}});
+        return datasets.computeIfAbsent(id,k->{
+            if(!Files.isRegularFile(path(k)))throw new ApiException(404,"NOT_FOUND","Объект не найден");
+            try{return mapper.readValue(path(k).toFile(),Dataset.class);}catch(IOException e){throw new IllegalStateException(e);}
+        });
     }
     public ObjectNode summary(String id) {return summary(id,dataset(id));}
     public ArrayNode listDatasets() throws IOException {
@@ -51,6 +57,7 @@ public class LocalStore {
         if(d.availability().isEmpty()||d.inventory().isEmpty())partial=true;
         n.put("status",partial?"PARTIAL":"READY");
         n.putObject("counts").put("suppliers",d.suppliers().size()).put("products",d.products().size()).put("sales",d.sales().size()).put("inventory",d.inventory().size()).put("inbound",d.inbound().size()).put("monthly_sales",d.monthlySales().size()).put("monthly_stock",d.monthlyStock().size());
+        ((ObjectNode)n.get("counts")).put("reported_inbound",d.reportedInbound().size()).put("reported_purchase_rules",d.reportedPurchaseRules().size());
         n.set("sources",mapper.valueToTree(d.sources()));n.set("issues",mapper.valueToTree(d.issues().stream().limit(200).toList()));n.put("issue_count",d.issues().size());n.put("issues_truncated",d.issues().size()>200);
         ObjectNode coverage=n.putObject("coverage");coverage.set("sales",mapper.valueToTree(d.salesCoverage()));coverage.set("inbound",mapper.valueToTree(d.inboundCoverage()));
         coverage.set("inventory_dates",mapper.valueToTree(d.inventory().stream().map(Inventory::asOf).distinct().sorted().toList()));
@@ -123,7 +130,7 @@ public class LocalStore {
         if(!Files.isRegularFile(path(id)))throw new ApiException(404,"NOT_FOUND","Объект не найден");
         try{return mapper.readTree(path(id).toFile());}catch(IOException e){throw new IllegalStateException(e);}
     }
-    private void write(String id,JsonNode data)throws IOException {
+    private void write(String id,Object data)throws IOException {
         Path temp=Files.createTempFile(directory,"write-",".tmp");
         try {mapper.writeValue(temp.toFile(),data);try{Files.move(temp,path(id),StandardCopyOption.REPLACE_EXISTING,StandardCopyOption.ATOMIC_MOVE);}catch(AtomicMoveNotSupportedException e){Files.move(temp,path(id),StandardCopyOption.REPLACE_EXISTING);}}
         finally {Files.deleteIfExists(temp);}

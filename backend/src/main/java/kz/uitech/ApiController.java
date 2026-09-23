@@ -13,20 +13,27 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1")
 public class ApiController {
-    private final ObjectMapper mapper;private final LocalStore store;private final CalculationEngine engine;private final SystemeImporter importer;
-    public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;}
+    private final ObjectMapper mapper;private final LocalStore store;private final CalculationEngine engine;private final SystemeImporter importer;private final IekImporter iek;
+    public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer,IekImporter iek){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;this.iek=iek;}
     @GetMapping("/health") public Map<String,String> health(){return Map.of("status","ok","api_version","1.0");}
     @GetMapping("/datasets") public JsonNode datasets()throws IOException{return store.listDatasets();}
     @PostMapping("/datasets") public ResponseEntity<ObjectNode> dataset(@RequestBody Dataset dataset)throws IOException{return saved(store.putDataset(dataset));}
     @GetMapping("/datasets/{id}") public ObjectNode summary(@PathVariable String id){return store.summary(id);}
     @GetMapping("/datasets/{id}/data") public Dataset data(@PathVariable String id){return store.dataset(id);}
+    @GetMapping("/datasets/{id}/review") public DatasetReview review(@PathVariable String id){return DatasetReview.from(store.dataset(id));}
     @PostMapping(value="/datasets/import",consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ObjectNode> upload(@RequestParam String manifest,@RequestParam Map<String,MultipartFile> parts)throws IOException {
         ImportManifest input;
         try{input=mapper.readValue(manifest,ImportManifest.class);}catch(Exception e){throw new ApiException(400,"INVALID_MANIFEST","Некорректный JSON manifest");}
+        Validation.require(input!=null&&input.files()!=null&&!input.files().isEmpty(),"Нужны файлы manifest");
+        Set<String> suppliers=new HashSet<>();
+        for(ManifestFile file:input.files()){Validation.require(file!=null,"Пустая строка manifest");suppliers.add(file.supplierId());}
+        Validation.require(suppliers.size()==1,"За один импорт передавайте файлы одного поставщика");
+        String supplier=suppliers.iterator().next();
+        Validation.require("SYSTEME".equals(supplier)||"IEK".equals(supplier),"Поддерживаются поставщики SYSTEME и IEK");
         Map<String,SystemeImporter.FileInput> files=new HashMap<>();
         for(var part:parts.entrySet()) {MultipartFile f=part.getValue();String name=Objects.toString(f.getOriginalFilename(),"upload.xlsx").replace('\\','/');name=name.substring(name.lastIndexOf('/')+1);files.put(part.getKey(),new SystemeImporter.FileInput(name,f.getBytes()));}
-        return saved(store.putDataset(importer.parse(input,files)));
+        return saved(store.putDataset("IEK".equals(supplier)?iek.parse(input,files):importer.parse(input,files)));
     }
     private ResponseEntity<ObjectNode> saved(ObjectNode summary){return ResponseEntity.status(summary.path("reused").asBoolean()?200:201).body(summary);}
     @PostMapping("/calculations") public ResponseEntity<ObjectNode> calculate(@RequestBody CalculationRequest request)throws IOException {
