@@ -1,0 +1,65 @@
+name: uitech
+services:
+  postgres:
+    image: postgres:17.11-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-uitech}
+      POSTGRES_USER: ${POSTGRES_USER:-uitech}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the local env file}
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+    mem_limit: 384m
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      SPRING_PROFILES_ACTIVE: postgres
+      UITECH_BIND_ADDRESS: 0.0.0.0
+      UITECH_DB_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DB:-uitech}?reWriteBatchedInserts=true
+      UITECH_DB_USER: ${POSTGRES_USER:-uitech}
+      UITECH_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in the local env file}
+      UITECH_FILES_DIR: /data/files
+      UITECH_MIGRATE_LOCAL: "false"
+    ports:
+      - "127.0.0.1:${BACKEND_PORT:-8080}:8080"
+    volumes:
+      - source-files:/data/files
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/api/v1/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 20s
+    restart: unless-stopped
+    mem_limit: 896m
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "127.0.0.1:${UI_PORT:-5173}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1/api/v1/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    restart: unless-stopped
+    mem_limit: 128m
+volumes:
+  postgres-data:
+  source-files:

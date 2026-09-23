@@ -17,10 +17,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@org.springframework.test.context.ActiveProfiles("file")
 class ApiTest {
     static final Path DATA=createDirectory();
     static Path createDirectory(){try{return Files.createTempDirectory("uitech-api-test-");}catch(Exception e){throw new RuntimeException(e);}}
-    @DynamicPropertySource static void properties(DynamicPropertyRegistry r){r.add("uitech.data-dir",()->DATA.toString());}
+    @DynamicPropertySource static void properties(DynamicPropertyRegistry r){r.add("uitech.data-dir",()->DATA.toString());r.add("uitech.files-dir",()->DATA.resolve("files").toString());}
     @Autowired MockMvc mvc;
     @Autowired ObjectMapper mapper;
     ObjectNode postJson(String url,JsonNode body,int status)throws Exception {return (ObjectNode)mapper.readTree(mvc.perform(post(url).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsBytes(body))).andExpect(status().is(status)).andReturn().getResponse().getContentAsByteArray());}
@@ -58,7 +59,13 @@ class ApiTest {
         var files=IekImporterTest.files();var manifest=IekImporterTest.manifest(files.keySet());
         var request=multipart("/api/v1/datasets/import");request.param("manifest",mapper.writeValueAsString(manifest));
         for(var entry:files.entrySet())request.file(new org.springframework.mock.web.MockMultipartFile(entry.getKey(),entry.getValue().name(),"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",entry.getValue().bytes()));
-        mvc.perform(request).andExpect(status().isCreated()).andExpect(jsonPath("$.counts.reported_inbound").value(3)).andExpect(jsonPath("$.counts.inbound").value(0));
+        byte[] result=mvc.perform(request).andExpect(status().isCreated()).andExpect(jsonPath("$.counts.reported_inbound").value(3)).andExpect(jsonPath("$.counts.inbound").value(0)).andReturn().getResponse().getContentAsByteArray();
+        String id=mapper.readTree(result).path("dataset_id").asText();
+        JsonNode originals=mapper.readTree(mvc.perform(get("/api/v1/datasets/"+id+"/files")).andExpect(status().isOk()).andReturn().getResponse().getContentAsByteArray());assertEquals(6,originals.size());
+        JsonNode original=originals.get(0);String download="/api/v1/datasets/"+id+"/files/"+original.path("sha256").asText();
+        byte[] downloaded=mvc.perform(get(download)).andExpect(status().isOk()).andReturn().getResponse().getContentAsByteArray();
+        assertArrayEquals(files.get(original.path("part_name").asText()).bytes(),downloaded);
+        mvc.perform(get("/api/v1/datasets/"+id+"/files/"+"0".repeat(64))).andExpect(status().isNotFound());
         ObjectNode mixed=mapper.valueToTree(manifest);((ObjectNode)mixed.withArray("files").get(0)).put("supplier_id","SYSTEME");
         mvc.perform(multipart("/api/v1/datasets/import").param("manifest",mapper.writeValueAsString(mixed))).andExpect(status().isUnprocessableEntity());
     }

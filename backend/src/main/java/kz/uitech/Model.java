@@ -13,6 +13,7 @@ public final class Model {
     public static <T> List<T> list(List<T> v) { return v == null ? List.of() : List.copyOf(v); }
     public record Ref(String sourceId, String sheet, String cellRange) {}
     public record Source(String sourceId, String kind, String role, String fileName, String note) {}
+    public record SourceFile(String partName,String fileName,String objectKey,String sha256,long byteSize){}
     public record Issue(String code, String severity, String productId, String message, List<Ref> sourceRefs) {
         public Issue { sourceRefs = list(sourceRefs); }
     }

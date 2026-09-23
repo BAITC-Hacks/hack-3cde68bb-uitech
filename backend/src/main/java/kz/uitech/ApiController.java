@@ -13,14 +13,19 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1")
 public class ApiController {
-    private final ObjectMapper mapper;private final LocalStore store;private final CalculationEngine engine;private final SystemeImporter importer;private final IekImporter iek;
-    public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer,IekImporter iek){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;this.iek=iek;}
-    @GetMapping("/health") public Map<String,String> health(){return Map.of("status","ok","api_version","1.0");}
+    private final ObjectMapper mapper;private final LocalStore store;private final CalculationEngine engine;private final SystemeImporter importer;private final IekImporter iek;private final FileStorage fileStorage;
+    public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer,IekImporter iek,FileStorage fileStorage){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;this.iek=iek;this.fileStorage=fileStorage;}
+    @GetMapping("/health") public Map<String,String> health(){store.checkHealth();return Map.of("status","ok","api_version","1.0","storage",store.storageKind());}
     @GetMapping("/datasets") public JsonNode datasets()throws IOException{return store.listDatasets();}
     @PostMapping("/datasets") public ResponseEntity<ObjectNode> dataset(@RequestBody Dataset dataset)throws IOException{return saved(store.putDataset(dataset));}
     @GetMapping("/datasets/{id}") public ObjectNode summary(@PathVariable String id){return store.summary(id);}
     @GetMapping("/datasets/{id}/data") public Dataset data(@PathVariable String id){return store.dataset(id);}
-    @GetMapping("/datasets/{id}/review") public DatasetReview review(@PathVariable String id){return DatasetReview.from(store.dataset(id));}
+    @GetMapping("/datasets/{id}/review") public DatasetReview review(@PathVariable String id){return store.review(id);}
+    @GetMapping("/datasets/{id}/files") public List<SourceFile> files(@PathVariable String id){return store.files(id);}
+    @GetMapping("/datasets/{id}/files/{sha256}") public ResponseEntity<org.springframework.core.io.Resource> file(@PathVariable String id,@PathVariable String sha256)throws IOException {
+        SourceFile file=store.files(id).stream().filter(f->f.sha256().equals(sha256)).findFirst().orElseThrow(()->new ApiException(404,"NOT_FOUND","Файл не найден в наборе"));
+        return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM).header(HttpHeaders.CONTENT_DISPOSITION,ContentDisposition.attachment().filename(file.fileName(),StandardCharsets.UTF_8).build().toString()).body(fileStorage.resource(file.objectKey()));
+    }
     @PostMapping(value="/datasets/import",consumes=MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<ObjectNode> upload(@RequestParam String manifest,@RequestParam Map<String,MultipartFile> parts)throws IOException {
         ImportManifest input;
@@ -33,7 +38,13 @@ public class ApiController {
         Validation.require("SYSTEME".equals(supplier)||"IEK".equals(supplier),"Поддерживаются поставщики SYSTEME и IEK");
         Map<String,SystemeImporter.FileInput> files=new HashMap<>();
         for(var part:parts.entrySet()) {MultipartFile f=part.getValue();String name=Objects.toString(f.getOriginalFilename(),"upload.xlsx").replace('\\','/');name=name.substring(name.lastIndexOf('/')+1);files.put(part.getKey(),new SystemeImporter.FileInput(name,f.getBytes()));}
-        return saved(store.putDataset("IEK".equals(supplier)?iek.parse(input,files):importer.parse(input,files)));
+        Dataset dataset="IEK".equals(supplier)?iek.parse(input,files):importer.parse(input,files);Validation.dataset(dataset);
+        List<SourceFile> savedFiles=new ArrayList<>();
+        for(ManifestFile entry:input.files()){
+            var file=files.get(entry.partName());var object=fileStorage.put(file.bytes());
+            savedFiles.add(new SourceFile(entry.role(),file.name(),object.objectKey(),object.sha256(),object.byteSize()));
+        }
+        return saved(store.putDataset(dataset,savedFiles));
     }
     private ResponseEntity<ObjectNode> saved(ObjectNode summary){return ResponseEntity.status(summary.path("reused").asBoolean()?200:201).body(summary);}
     @PostMapping("/calculations") public ResponseEntity<ObjectNode> calculate(@RequestBody CalculationRequest request)throws IOException {
