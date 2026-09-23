@@ -91,6 +91,53 @@ test('unknown stock blocks approval and export', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Сохранить корректировку' })).toHaveCount(0);
 });
 
+test('manager fills missing source stock, recalculates and can audit the immutable correction', async ({
+  page,
+}, info) => {
+  await openDemo(page, 'Неизвестный остаток');
+  const oldId = await page.evaluate(() => localStorage.getItem('uitech.lastCalculation'));
+  const oldCalc = await (await page.request.get('/api/v1/calculations/' + oldId)).json();
+  await page.locator('tbody tr').first().getByRole('button').first().click();
+  await page.getByRole('button', { name: 'Уточнить исходные данные товара' }).click();
+  let dialog = page.getByRole('dialog');
+  await expect(dialog.getByLabel(/^Свободный остаток,/)).toHaveValue('');
+  await dialog.getByLabel(/^Свободный остаток,/).fill('40');
+  await dialog.getByLabel('Автор исправления').fill('Тестовый закупщик');
+  await dialog
+    .getByLabel('Причина и источник проверки')
+    .fill('Остаток подтверждён контрольным отчётом');
+  await dialog.getByLabel('Уточнить сроки поставщика').check();
+  await dialog.getByLabel('Срок поставки, дней', { exact: true }).fill('7');
+  await dialog.getByLabel('Период между заказами, дней', { exact: true }).fill('7');
+  await page.screenshot({ path: info.outputPath('source-editor.png'), fullPage: true });
+  await dialog.getByRole('button', { name: 'Сохранить и перейти к расчёту' }).click();
+  await expect(
+    dialog.getByRole('heading', { name: 'Параметры расчёта', exact: true }),
+  ).toBeVisible();
+  await expect(dialog.getByLabel('Срок поставки SUP_A')).toHaveValue('7');
+  await dialog.getByRole('button', { name: 'Рассчитать рекомендации' }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(page.locator('tbody tr').first()).toContainText('150');
+  await expect(page.getByRole('button', { name: 'Утвердить заказ', exact: true })).toBeEnabled();
+  await expect(page.getByRole('button', { name: 'Экспорт CSV', exact: true })).toBeDisabled();
+  const newId = await page.evaluate(() => localStorage.getItem('uitech.lastCalculation'));
+  const newCalc = await (await page.request.get('/api/v1/calculations/' + newId)).json();
+  expect(newCalc.dataset_id).not.toBe(oldCalc.dataset_id);
+  expect(await (await page.request.get('/api/v1/calculations/' + oldId)).json()).toEqual(oldCalc);
+  await page.reload();
+  await page.getByRole('button', { name: 'Уточнить данные', exact: true }).click();
+  dialog = page.getByRole('dialog');
+  await expect(dialog.getByRole('heading', { name: 'История исправлений товара' })).toBeVisible();
+  await expect(
+    dialog.getByText('Остаток подтверждён контрольным отчётом', { exact: true }),
+  ).toBeVisible();
+  await page.setViewportSize({ width: 390, height: 844 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
+    true,
+  );
+  await page.screenshot({ path: info.outputPath('source-editor-mobile.png'), fullPage: true });
+});
+
 test('JSON upload preserves calculation parameters and runs through the form', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('Локальный сервер подключён')).toBeVisible();
@@ -111,6 +158,7 @@ test('JSON upload preserves calculation parameters and runs through the form', a
 test('real Excel import exposes source quality without inventing a recommendation', async ({
   page,
 }) => {
+  test.setTimeout(120000);
   const dir = process.env.UITECH_XLSX_DIR;
   test.skip(!dir, 'Set UITECH_XLSX_DIR to six extracted Systeme XLSX files');
   const files = (await readdir(dir!))
@@ -124,7 +172,7 @@ test('real Excel import exposes source quality without inventing a recommendatio
   await page.getByRole('button', { name: 'Импортировать 6 файлов' }).click();
   await expect(
     page.getByText('Набор сохранён. Проверьте качество данных перед расчётом.'),
-  ).toBeVisible();
+  ).toBeVisible({ timeout: 90000 });
   await expect(page.getByText(/724 товаров/).first()).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Рекомендации к закупке' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Качество данных', exact: true }).click();

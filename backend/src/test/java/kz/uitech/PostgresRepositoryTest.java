@@ -41,6 +41,23 @@ class PostgresRepositoryTest {
         assertEquals("000001_",repo.review(id).products().get(0).sku1c());
         assertEquals(id,new LocalStore(MAPPER,repository()).putDataset(repo.dataset(id)).path("dataset_id").asText());
     }
+    @Test void correctionAuditAndUnknownPurchaseValuesSurviveDatabaseReload()throws Exception {
+        var store=new LocalStore(MAPPER,repository());Dataset original=dataset("source corrections");String parent=store.putDataset(original).path("dataset_id").asText();
+        var change=new ProductCorrection("Manager","Confirmed box size; MOQ still unknown",new PurchaseFacts("box",new java.math.BigDecimal("12"),"CRITICAL",null,null),null,new SupplierPolicy("SUP_A",9,7));
+        String child=new SourceCorrections(store,MAPPER).correct(parent,"P1",change).path("dataset_id").asText();
+        var reopened=new LocalStore(MAPPER,repository());Dataset loaded=reopened.dataset(child);
+        assertEquals("box",loaded.products().get(0).purchaseUnit());assertNull(loaded.products().get(0).moqPurchaseQty());assertNull(loaded.products().get(0).packMultiplePurchaseQty());
+        assertEquals(MAPPER.valueToTree(original),MAPPER.valueToTree(reopened.dataset(parent)));
+        JsonNode audit=MAPPER.valueToTree(loaded.sources().get(loaded.sources().size()-1).correction());assertEquals(9,audit.path("supplier_policy").path("lead_time_days").asInt());assertEquals("Manager",audit.path("author").asText());
+        assertEquals(child,LocalStore.datasetId(MAPPER,loaded));
+        assertEquals(original.sales(),loaded.sales());assertEquals(original.inbound(),loaded.inbound());
+        assertEquals(0,jdbc.queryForObject("SELECT count(*) FROM sales WHERE dataset_id=?",Integer.class,child));
+        var stock=original.inventory().get(0);
+        String grandchild=new SourceCorrections(reopened,MAPPER).correct(child,"P1",new ProductCorrection("Second manager","Counted stock",null,new StockFacts(stock.warehouseId(),stock.asOf(),new java.math.BigDecimal("70")),null)).path("dataset_id").asText();
+        assertEquals(parent,jdbc.queryForObject("SELECT history_dataset_id FROM datasets WHERE dataset_id=?",String.class,grandchild));
+        assertEquals(original.sales(),reopened.dataset(grandchild).sales());assertEquals("box",reopened.dataset(grandchild).products().get(0).purchaseUnit());
+        assertEquals(70,reopened.dataset(grandchild).inventory().get(0).freeStockQty().intValue());
+    }
     @Test void failedDatasetImportRollsBackHeaderAndAllPreviouslyInsertedRows()throws Exception {
         ObjectNode raw=MAPPER.valueToTree(dataset("rollback"));((ObjectNode)raw.withArray("sales").get(0)).put("product_id","unknown");Dataset d=MAPPER.treeToValue(raw,Dataset.class);
         String id="ds_"+"a".repeat(64);

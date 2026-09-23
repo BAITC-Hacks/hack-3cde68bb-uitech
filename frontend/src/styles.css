@@ -20,6 +20,7 @@ body {
 }
 button,
 input,
+textarea,
 select {
   font: inherit;
 }
@@ -88,6 +89,7 @@ fieldset {
   min-width: 0;
 }
 input,
+textarea,
 select {
   width: 100%;
   min-width: 0;
@@ -102,6 +104,7 @@ input::placeholder {
   color: #9aa59e;
 }
 input:focus,
+textarea:focus,
 select:focus {
   border-color: #70a58b;
   box-shadow: 0 0 0 3px #20755d0a;
@@ -116,9 +119,29 @@ label {
   color: #596c5f;
 }
 label input,
+label textarea,
 label select {
   font-size: 14px;
   font-weight: 400;
+}
+.source-editor-toggle {
+  flex-direction: row;
+  align-items: center;
+  margin: 22px 0 14px;
+  font-size: 14px;
+}
+.correction-history {
+  margin-top: 28px;
+}
+.correction-history .notice {
+  display: block;
+  background: #f5f8f5;
+  overflow-wrap: anywhere;
+}
+textarea {
+  resize: vertical;
+  min-height: 76px;
+  font-family: inherit;
 }
 input[type='checkbox'] {
   width: 16px;
@@ -390,6 +413,7 @@ details[open] summary {
   color: #1e503c;
 }
 .brand-mark {
+  flex-shrink: 0;
   width: 37px;
   height: 37px;
   display: flex;
@@ -403,6 +427,10 @@ details[open] summary {
 .brand-point {
   margin-left: -11px;
   color: #99b78a;
+}
+.brand-name {
+  font-size: 21px;
+  letter-spacing: -0.8px;
 }
 .sidebar-caption {
   font-size: 8px;

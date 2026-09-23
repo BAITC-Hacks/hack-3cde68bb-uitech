@@ -3,22 +3,37 @@ import type { Dataset, Params } from './types';
 import { Icon } from './ui';
 
 export function initialParams(dataset: Dataset, id: string): Params {
-  const asOf = dataset.inventory[0]?.as_of || new Date().toISOString().slice(0, 10);
+  const correctedPolicies = new Map(
+    dataset.sources
+      .filter((s) => s.correction?.supplier_policy)
+      .map((s) => [s.correction!.supplier_policy!.supplier_id, s.correction!.supplier_policy!]),
+  );
+  const correctedStock = dataset.sources
+    .flatMap((s) => (s.correction?.after_stock ? [s.correction.after_stock] : []))
+    .at(-1);
+  const asOf =
+    correctedStock?.as_of || dataset.inventory[0]?.as_of || new Date().toISOString().slice(0, 10);
   const start = new Date(asOf + 'T12:00:00Z');
   start.setUTCMonth(start.getUTCMonth() - 6);
   return {
     dataset_id: id,
     as_of: asOf,
     warehouse_id:
-      dataset.inventory[0]?.warehouse_id || dataset.sales_coverage[0]?.warehouse_id || '',
+      correctedStock?.warehouse_id ||
+      dataset.inventory[0]?.warehouse_id ||
+      dataset.sales_coverage[0]?.warehouse_id ||
+      '',
     history_start: start.toISOString().slice(0, 10),
     supplier_ids: [],
     category_ids: [],
-    supplier_policies: dataset.suppliers.map((s) => ({
-      supplier_id: s.supplier_id,
-      lead_time_days: null,
-      review_period_days: null,
-    })),
+    supplier_policies: dataset.suppliers.map(
+      (s) =>
+        correctedPolicies.get(s.supplier_id) || {
+          supplier_id: s.supplier_id,
+          lead_time_days: null,
+          review_period_days: null,
+        },
+    ),
     category_policies: [
       ...new Set(dataset.products.map((p) => p.category_id).filter((c): c is string => !!c)),
     ]

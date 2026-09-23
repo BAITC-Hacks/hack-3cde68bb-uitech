@@ -14,7 +14,12 @@ import java.util.*;
 @RequestMapping("/api/v1")
 public class ApiController {
     private final ObjectMapper mapper;private final LocalStore store;private final CalculationEngine engine;private final SystemeImporter importer;private final IekImporter iek;private final FileStorage fileStorage;
-    public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer,IekImporter iek,FileStorage fileStorage){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;this.iek=iek;this.fileStorage=fileStorage;}
+    private final SourceCorrections corrections;
+    public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer,IekImporter iek,FileStorage fileStorage,SourceCorrections corrections){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;this.iek=iek;this.fileStorage=fileStorage;this.corrections=corrections;}
+    @PostMapping("/datasets/{id}/products/{productId}/corrections")
+    public ResponseEntity<ObjectNode> correct(@PathVariable String id,@PathVariable String productId,@RequestBody ProductCorrection change)throws IOException {
+        return saved(corrections.correct(id,productId,change));
+    }
     @GetMapping("/health") public Map<String,String> health(){store.checkHealth();return Map.of("status","ok","api_version","1.0","storage",store.storageKind());}
     @GetMapping("/datasets") public JsonNode datasets()throws IOException{return store.listDatasets();}
     @PostMapping("/datasets") public ResponseEntity<ObjectNode> dataset(@RequestBody Dataset dataset)throws IOException{return saved(store.putDataset(dataset));}

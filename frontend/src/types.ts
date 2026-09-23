@@ -42,7 +42,13 @@ export interface Dataset {
     end_date_exclusive: string;
     complete: boolean;
   }[];
-  sources: { source_id: string; file_name: string | null; role: string; note: string }[];
+  sources: {
+    source_id: string;
+    file_name: string | null;
+    role: string;
+    note: string;
+    correction?: CorrectionAudit;
+  }[];
   issues: Issue[];
   reported_inbound?: {
     source_row_id: string;
@@ -62,6 +68,31 @@ export interface Dataset {
     unit: string | null;
     source_refs: Ref[];
   }[];
+}
+export interface ProductCorrection {
+  author: string;
+  reason: string;
+  purchase: {
+    purchase_unit: string;
+    purchase_unit_factor: number | null;
+    category_id: string | null;
+    moq_purchase_qty: number | null;
+    pack_multiple_purchase_qty: number | null;
+  } | null;
+  stock: { warehouse_id: string; as_of: string; free_stock_qty: number } | null;
+  supplier_policy: Params['supplier_policies'][number] | null;
+}
+export interface CorrectionAudit {
+  parent_dataset_id: string;
+  product_id: string;
+  author: string;
+  reason: string;
+  created_at: string;
+  before_product: Product;
+  after_product: Product;
+  before_stock: Dataset['inventory'][number] | null;
+  after_stock: Dataset['inventory'][number] | null;
+  supplier_policy: ProductCorrection['supplier_policy'];
 }
 export interface Summary {
   dataset_id: string;

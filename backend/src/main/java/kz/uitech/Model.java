@@ -12,7 +12,18 @@ public final class Model {
     private Model() {}
     public static <T> List<T> list(List<T> v) { return v == null ? List.of() : List.copyOf(v); }
     public record Ref(String sourceId, String sheet, String cellRange) {}
-    public record Source(String sourceId, String kind, String role, String fileName, String note) {}
+    public record Source(String sourceId, String kind, String role, String fileName, String note,
+                         @JsonInclude(JsonInclude.Include.NON_NULL) CorrectionAudit correction) {
+        public Source(String sourceId,String kind,String role,String fileName,String note){this(sourceId,kind,role,fileName,note,null);}
+    }
+    public record PurchaseFacts(String purchaseUnit,BigDecimal purchaseUnitFactor,String categoryId,
+                                BigDecimal moqPurchaseQty,BigDecimal packMultiplePurchaseQty) {}
+    public record StockFacts(String warehouseId,LocalDate asOf,BigDecimal freeStockQty) {}
+    public record ProductCorrection(String author,String reason,PurchaseFacts purchase,StockFacts stock,
+                                    SupplierPolicy supplierPolicy) {}
+    public record CorrectionAudit(String parentDatasetId,String productId,String author,String reason,String createdAt,
+                                  Product beforeProduct,Product afterProduct,Inventory beforeStock,Inventory afterStock,
+                                  SupplierPolicy supplierPolicy) {}
     public record SourceFile(String partName,String fileName,String objectKey,String sha256,long byteSize){}
     public record Issue(String code, String severity, String productId, String message, List<Ref> sourceRefs) {
         public Issue { sourceRefs = list(sourceRefs); }

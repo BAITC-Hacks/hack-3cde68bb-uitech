@@ -7,11 +7,13 @@ export default function ItemDetail({
   product,
   busy,
   edit,
+  correctSource,
 }: {
   item: Item;
   product?: Product;
   busy: boolean;
   edit: (qty: number | null, reason: string) => void;
+  correctSource: () => void;
 }) {
   const [quantity, setQuantity] = useState(
     item.final_purchase_qty == null ? '' : String(item.final_purchase_qty),
@@ -48,6 +50,9 @@ export default function ItemDetail({
           <strong className="date-value">{date(item.first_stockout_date)}</strong>
         </div>
       </div>
+      <button className="secondary" disabled={busy} onClick={correctSource}>
+        Уточнить исходные данные товара
+      </button>
       <section>
         <h3>Как получено количество</h3>
         <p className={`explanation ${blocked ? 'blocked' : ''}`}>

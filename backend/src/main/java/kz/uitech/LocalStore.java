@@ -34,6 +34,11 @@ public class LocalStore {
         boolean inserted=repository.insertDatasetWithFiles(id,d,datasetSummary(mapper,id,d,created),created,files);
         ObjectNode result=repository.summary(id);result.put("reused",!inserted);return result;
     }
+    synchronized ObjectNode putCorrectedDataset(Dataset d,String parentId)throws IOException {
+        Validation.dataset(d);String id=datasetId(mapper,d);var created=java.time.Instant.now();
+        boolean inserted=repository.insertCorrectedDataset(id,d,datasetSummary(mapper,id,d,created),created,files(parentId),parentId);
+        ObjectNode result=repository.summary(id);result.put("reused",!inserted);return result;
+    }
     static String datasetId(ObjectMapper mapper,Dataset d)throws IOException{
         MessageDigest digest;
         try{digest=MessageDigest.getInstance("SHA-256");}catch(java.security.NoSuchAlgorithmException e){throw new IllegalStateException(e);}

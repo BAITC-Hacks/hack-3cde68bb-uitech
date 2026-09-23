@@ -1,10 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { api, ApiError, downloadCsv } from './api';
-import type { Calculation, Dataset, Fixture, Item, Params, Summary } from './types';
+import type {
+  Calculation,
+  Dataset,
+  Fixture,
+  Item,
+  Params,
+  ProductCorrection,
+  Summary,
+} from './types';
 import { Badge, date, fmt, Icon, Kind, Modal } from './ui';
 import Settings, { initialParams } from './Settings';
 import Upload from './Upload';
 import ItemDetail from './ItemDetail';
+import SourceEditor from './SourceEditor';
 
 const fixtures = import.meta.glob<Fixture>('../../fixtures/contract/*.json', { import: 'default' });
 const demos = [
@@ -25,7 +34,7 @@ const demos = [
   ['14_missing_stock', 'Неизвестный остаток', 'Неполные данные блокируют утверждение.'],
 ];
 type View = 'orders' | 'data';
-type Dialog = 'upload' | 'demo' | 'settings' | 'approve' | 'export' | 'quality' | null;
+type Dialog = 'upload' | 'demo' | 'settings' | 'approve' | 'export' | 'quality' | 'facts' | null;
 const readSaved = () => {
   try {
     return localStorage.getItem('uitech.lastCalculation');
@@ -51,6 +60,7 @@ export default function App() {
   const [view, setView] = useState<View>('orders');
   const [dialog, setDialog] = useState<Dialog>(null);
   const [itemId, setItemId] = useState<string | null>(null);
+  const [factsProductId, setFactsProductId] = useState<string | undefined>();
   const [busy, setBusy] = useState('');
   const lock = useRef(false);
   const [error, setError] = useState('');
@@ -211,6 +221,38 @@ export default function App() {
       setSuccess('Расчёт готов. Проверьте рекомендации перед утверждением.');
     });
   }
+  function correctSource(productId: string, change: ProductCorrection) {
+    void perform('Сохраняем уточнённый набор…', async () => {
+      const saved = await api<Summary>(
+        `/datasets/${datasetId}/products/${encodeURIComponent(productId)}/corrections`,
+        change,
+      );
+      const data = await api<Dataset>(`/datasets/${saved.dataset_id}/review`);
+      const defaults = initialParams(data, saved.dataset_id);
+      const config: Params = {
+        ...params!,
+        dataset_id: saved.dataset_id,
+        as_of: change.stock?.as_of || params!.as_of,
+        warehouse_id: change.stock?.warehouse_id || params!.warehouse_id,
+        category_ids: params!.category_ids.filter((id) =>
+          data.products.some((p) => p.category_id === id),
+        ),
+        category_policies: defaults.category_policies.map(
+          (policy) =>
+            params!.category_policies.find((p) => p.category_id === policy.category_id) || policy,
+        ),
+        supplier_policies: params!.supplier_policies.map((policy) =>
+          change.supplier_policy?.supplier_id === policy.supplier_id
+            ? change.supplier_policy
+            : policy,
+        ),
+      };
+      await refreshCatalog();
+      await loadDataset(saved.dataset_id, config);
+      setDialog('settings');
+      setSuccess('Создан новый набор с исправлением. Проверьте параметры нового расчёта.');
+    });
+  }
   const positive = calc?.items.filter((i) => (i.final_purchase_qty || 0) > 0).length || 0;
   const shortage = calc?.items.filter((i) => !!i.first_stockout_date).length || 0;
   const blocked = calc?.summary.needs_input_count || 0;
@@ -253,7 +295,7 @@ export default function App() {
           <span className="brand-mark">
             <Icon name="boxes" size={25} />
           </span>
-          uitech<span className="brand-point">.</span>
+          <span className="brand-name">SupplyMind</span>
         </a>
         <p className="sidebar-caption">УПРАВЛЕНИЕ ЗАПАСАМИ</p>
         <nav aria-label="Основная навигация">
@@ -326,6 +368,16 @@ export default function App() {
               </p>
             </div>
             <div className="actions">
+              <button
+                className="secondary"
+                disabled={!dataset || !!busy}
+                onClick={() => {
+                  setFactsProductId(undefined);
+                  show('facts');
+                }}
+              >
+                Уточнить данные
+              </button>
               <button className="secondary" disabled={!!busy} onClick={() => show('demo')}>
                 <Icon name="play" size={16} />
                 Демо-сценарии
@@ -817,7 +869,7 @@ export default function App() {
             </>
           )}
           <footer className="page-footer">
-            <span>uitech · Планирование пополнения</span>
+            <span>SupplyMind · Планирование пополнения</span>
             <span>Данные хранятся локально · Экспорт после утверждения</span>
           </footer>
         </main>
@@ -877,6 +929,18 @@ export default function App() {
           <Settings dataset={dataset} value={params} busy={!!busy} submit={calculate} />
         </Modal>
       )}
+      {dialog === 'facts' && dataset && params && (
+        <Modal title="Уточнение исходных данных" close={close} wide busy={!!busy}>
+          {modalFeedback}
+          <SourceEditor
+            dataset={dataset}
+            params={params}
+            initialProductId={factsProductId}
+            busy={!!busy}
+            submit={correctSource}
+          />
+        </Modal>
+      )}
       {selected && (
         <Modal title="Объяснение рекомендации" close={close} wide busy={!!busy}>
           {modalFeedback}
@@ -885,6 +949,11 @@ export default function App() {
             item={selected}
             product={dataset?.products.find((p) => p.product_id === selected.product_id)}
             busy={!!busy}
+            correctSource={() => {
+              setFactsProductId(selected.product_id);
+              setItemId(null);
+              show('facts');
+            }}
             edit={(qty, reason) =>
               void perform('Сохраняем корректировку…', async () => {
                 const result = await api<Calculation>(

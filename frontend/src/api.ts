@@ -44,7 +44,7 @@ export async function downloadCsv(id: string, supplier: string, revision: number
   const url = URL.createObjectURL(await response.blob());
   const link = document.createElement('a');
   link.href = url;
-  link.download = `uitech-${supplier.replace(/[^\w-]/g, '_')}-r${revision}.csv`;
+  link.download = `SupplyMind-${supplier.replace(/[^\w-]/g, '_')}-r${revision}.csv`;
   document.body.append(link);
   link.click();
   link.remove();

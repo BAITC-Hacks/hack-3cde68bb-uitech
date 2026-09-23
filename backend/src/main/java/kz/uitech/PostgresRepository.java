@@ -14,6 +14,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @Repository @Profile("postgres")
 public class PostgresRepository implements StorageRepository {
+    private static final Set<String> HISTORY_TABLES=Set.of("sales","inbound","sales_coverage","inbound_coverage","availability","seasonality_profiles","monthly_sales","monthly_stock","reported_inbound","reported_purchase_rules");
     private final ObjectMapper mapper;private final JdbcTemplate jdbc;private final TransactionTemplate tx;
     public PostgresRepository(ObjectMapper mapper,JdbcTemplate jdbc,PlatformTransactionManager manager){this.mapper=mapper;this.jdbc=jdbc;this.jdbc.setFetchSize(1000);this.tx=new TransactionTemplate(manager);}
     public String kind(){return "postgres";}
@@ -22,6 +23,9 @@ public class PostgresRepository implements StorageRepository {
     public Product product(String id,String productId){List<Product> rows=jdbc.query("SELECT payload::text FROM products WHERE dataset_id=? AND product_id=?",(r,n)->parse(r.getString(1),Product.class),id,productId);if(rows.isEmpty())throw new ApiException(404,"NOT_FOUND","Товар не найден");return rows.get(0);}
     public boolean insertDatasetWithFiles(String id,Dataset d,ObjectNode summary,Instant created,List<SourceFile> files){
         return Boolean.TRUE.equals(tx.execute(status->{boolean added=insertDataset(id,d,summary,created);attachFiles(id,files);return added;}));
+    }
+    public boolean insertCorrectedDataset(String id,Dataset d,ObjectNode summary,Instant created,List<SourceFile> files,String parentId){
+        return Boolean.TRUE.equals(tx.execute(status->{boolean added=insertDataset(id,d,summary,created,parentId);attachFiles(id,files);return added;}));
     }
     public void attachFiles(String id,List<SourceFile> files){tx.executeWithoutResult(status->{
         for(SourceFile f:files)jdbc.update("INSERT INTO source_files(dataset_id,part_name,file_name,object_key,sha256,byte_size) VALUES (?,?,?,?,?,?) ON CONFLICT DO NOTHING",id,f.partName(),f.fileName(),f.objectKey(),f.sha256(),f.byteSize());
@@ -34,16 +38,23 @@ public class PostgresRepository implements StorageRepository {
         if(rows.isEmpty())throw new ApiException(404,"NOT_FOUND","Объект не найден");return rows.get(0);
     }
     public boolean insertDataset(String id,Dataset d,ObjectNode summary,Instant created){
+        return insertDataset(id,d,summary,created,null);
+    }
+    private boolean insertDataset(String id,Dataset d,ObjectNode summary,Instant created,String parentId){
         return Boolean.TRUE.equals(tx.execute(status->{
             ObjectNode meta=mapper.createObjectNode().put("schema_version",d.schemaVersion()).put("name",d.name()).put("data_kind",d.dataKind()).put("timezone",d.timezone());
-            int added=jdbc.update("INSERT INTO datasets(dataset_id,metadata,summary,created_at) VALUES (?,?::jsonb,?::jsonb,?) ON CONFLICT DO NOTHING",id,json(meta),json(summary),OffsetDateTime.ofInstant(created,ZoneOffset.UTC));
+            String historyOwner=parentId==null?null:jdbc.queryForObject("SELECT COALESCE(history_dataset_id,dataset_id) FROM datasets WHERE dataset_id=?",String.class,parentId);
+            int added=jdbc.update("INSERT INTO datasets(dataset_id,metadata,summary,created_at,history_dataset_id) VALUES (?,?::jsonb,?::jsonb,?,?) ON CONFLICT DO NOTHING",id,json(meta),json(summary),OffsetDateTime.ofInstant(created,ZoneOffset.UTC),historyOwner);
             if(added==0)return false;
             insertRows("suppliers","dataset_id",id,d.suppliers());insertRows("products","dataset_id",id,d.products());
-            insertRows("sales","dataset_id",id,d.sales());insertRows("inventory","dataset_id",id,d.inventory());insertRows("inbound","dataset_id",id,d.inbound());
+            insertRows("inventory","dataset_id",id,d.inventory());insertRows("sources","dataset_id",id,d.sources());insertRows("issues","dataset_id",id,d.issues());
+            if(historyOwner==null){
+            insertRows("sales","dataset_id",id,d.sales());insertRows("inbound","dataset_id",id,d.inbound());
             insertRows("sales_coverage","dataset_id",id,d.salesCoverage());insertRows("inbound_coverage","dataset_id",id,d.inboundCoverage());insertRows("availability","dataset_id",id,d.availability());
-            insertRows("seasonality_profiles","dataset_id",id,d.seasonalityProfiles());insertRows("sources","dataset_id",id,d.sources());insertRows("issues","dataset_id",id,d.issues());
+            insertRows("seasonality_profiles","dataset_id",id,d.seasonalityProfiles());
             insertRows("monthly_sales","dataset_id",id,d.monthlySales());insertRows("monthly_stock","dataset_id",id,d.monthlyStock());
             insertRows("reported_inbound","dataset_id",id,d.reportedInbound());insertRows("reported_purchase_rules","dataset_id",id,d.reportedPurchaseRules());
+            }
             return true;
         }));
     }
@@ -56,7 +67,8 @@ public class PostgresRepository implements StorageRepository {
         }
     }
     private <T>List<T> rows(String table,String id,Class<T> type){
-        return jdbc.query("SELECT payload::text FROM "+table+" WHERE dataset_id=? ORDER BY position",(r,n)->parse(r.getString(1),type),id);
+        String owner=HISTORY_TABLES.contains(table)?"(SELECT COALESCE(history_dataset_id,dataset_id) FROM datasets WHERE dataset_id=?)":"?";
+        return jdbc.query("SELECT payload::text FROM "+table+" WHERE dataset_id="+owner+" ORDER BY position",(r,n)->parse(r.getString(1),type),id);
     }
     public Dataset dataset(String id){
         return tx.execute(status->readDataset(id));

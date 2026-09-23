@@ -24,6 +24,36 @@ class ApiTest {
     @DynamicPropertySource static void properties(DynamicPropertyRegistry r){r.add("uitech.data-dir",()->DATA.toString());r.add("uitech.files-dir",()->DATA.resolve("files").toString());}
     @Autowired MockMvc mvc;
     @Autowired ObjectMapper mapper;
+    @Autowired LocalStore store;
+    @Test void sourceCorrectionKeepsApprovedParentAndOriginalFilesAndValidatesInputs()throws Exception {
+        ObjectNode fixture=CalculationTest.fixture("01_baseline");fixture.withObject("dataset").put("name","API source correction");
+        String parent=postJson("/api/v1/datasets",fixture.get("dataset"),201).path("dataset_id").asText();
+        fixture.withObject("calculation").put("dataset_id",parent);
+        ObjectNode old=postJson("/api/v1/calculations",fixture.get("calculation"),201);
+        postJson("/api/v1/calculations/"+old.path("calculation_id").asText()+"/approve",approval(1),200);
+        var originalFile=new Model.SourceFile("sales","original.xlsx","ab/"+"a".repeat(64)+".bin","a".repeat(64),123);
+        store.attachFiles(parent,java.util.List.of(originalFile));
+        ObjectNode change=mapper.createObjectNode().put("author","Procurement manager").put("reason","Confirmed warehouse report");
+        JsonNode stock=fixture.withObject("dataset").withArray("inventory").get(0);
+        change.putObject("stock").put("warehouse_id",stock.path("warehouse_id").asText()).put("as_of",stock.path("as_of").asText()).put("free_stock_qty",70);
+        String endpoint="/api/v1/datasets/"+parent+"/products/P1/corrections";
+        ObjectNode invalid=change.deepCopy();invalid.put("author"," ");postJson(endpoint,invalid,422);
+        invalid=change.deepCopy();invalid.withObject("stock").put("free_stock_qty",-1);postJson(endpoint,invalid,422);
+        invalid=change.deepCopy();invalid.withObject("stock").put("warehouse_id","wrong");postJson(endpoint,invalid,422);
+        invalid=change.deepCopy();invalid.putObject("purchase").put("purchase_unit","box").put("purchase_unit_factor",0);postJson(endpoint,invalid,422);
+        postJson("/api/v1/datasets/"+parent+"/products/missing/corrections",change,404);
+        String child=postJson(endpoint,change,201).path("dataset_id").asText();assertNotEquals(parent,child);
+        assertEquals(java.util.List.of(originalFile),store.files(child));
+        assertEquals(40,store.dataset(parent).inventory().get(0).freeStockQty().intValue());
+        assertEquals(70,store.dataset(child).inventory().get(0).freeStockQty().intValue());
+        JsonNode audit=mapper.valueToTree(store.dataset(child).sources().get(store.dataset(child).sources().size()-1).correction());
+        assertEquals(parent,audit.path("parent_dataset_id").asText());assertEquals("Procurement manager",audit.path("author").asText());
+        assertEquals(40,audit.path("before_stock").path("free_stock_qty").asInt());assertEquals(70,audit.path("after_stock").path("free_stock_qty").asInt());
+        fixture.withObject("calculation").put("dataset_id",child);ObjectNode result=postJson("/api/v1/calculations",fixture.get("calculation"),201);
+        assertEquals(120,result.withArray("items").get(0).path("recommended_purchase_qty").asInt());assertEquals("DRAFT",result.path("status").asText());
+        assertEquals("APPROVED",store.calculation(old.path("calculation_id").asText()).path("status").asText());
+        assertEquals(150,store.calculation(old.path("calculation_id").asText()).withArray("items").get(0).path("final_purchase_qty").asInt());
+    }
     ObjectNode postJson(String url,JsonNode body,int status)throws Exception {return (ObjectNode)mapper.readTree(mvc.perform(post(url).contentType(MediaType.APPLICATION_JSON).content(mapper.writeValueAsBytes(body))).andExpect(status().is(status)).andReturn().getResponse().getContentAsByteArray());}
     ObjectNode create(String fixture)throws Exception {
         ObjectNode f=CalculationTest.fixture(fixture);String ds=postJson("/api/v1/datasets",f.get("dataset"),201).path("dataset_id").asText();
