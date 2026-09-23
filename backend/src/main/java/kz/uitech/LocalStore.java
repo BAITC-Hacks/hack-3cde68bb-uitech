@@ -35,6 +35,16 @@ public class LocalStore {
         return datasets.computeIfAbsent(id,k->{try{return mapper.treeToValue(read(k),Dataset.class);}catch(IOException e){throw new IllegalStateException(e);}});
     }
     public ObjectNode summary(String id) {return summary(id,dataset(id));}
+    public ArrayNode listDatasets() throws IOException {
+        List<ObjectNode> summaries=new ArrayList<>();
+        try(var files=Files.list(directory)) {
+            for(Path file:files.filter(p->p.getFileName().toString().matches("ds_[a-f0-9]{64}\\.json")).toList()) {
+                String name=file.getFileName().toString();summaries.add(summary(name.substring(0,name.length()-5)));
+            }
+        }
+        summaries.sort(Comparator.comparing((ObjectNode n)->n.path("created_at").asText()).reversed());
+        ArrayNode result=mapper.createArrayNode();summaries.forEach(result::add);return result;
+    }
     private ObjectNode summary(String id,Dataset d) {
         ObjectNode n=mapper.createObjectNode();n.put("dataset_id",id);n.put("name",d.name());n.put("data_kind",d.dataKind());n.put("schema_version",d.schemaVersion());
         boolean partial=d.issues().stream().anyMatch(i->!"info".equals(i.severity())) || d.salesCoverage().stream().anyMatch(c->!c.complete()) || d.products().stream().anyMatch(p->p.categoryId()==null||p.moqPurchaseQty()==null||p.packMultiplePurchaseQty()==null);

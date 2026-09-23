@@ -16,6 +16,7 @@ public class ApiController {
     private final ObjectMapper mapper;private final LocalStore store;private final CalculationEngine engine;private final SystemeImporter importer;
     public ApiController(ObjectMapper mapper,LocalStore store,CalculationEngine engine,SystemeImporter importer){this.mapper=mapper;this.store=store;this.engine=engine;this.importer=importer;}
     @GetMapping("/health") public Map<String,String> health(){return Map.of("status","ok","api_version","1.0");}
+    @GetMapping("/datasets") public JsonNode datasets()throws IOException{return store.listDatasets();}
     @PostMapping("/datasets") public ResponseEntity<ObjectNode> dataset(@RequestBody Dataset dataset)throws IOException{return saved(store.putDataset(dataset));}
     @GetMapping("/datasets/{id}") public ObjectNode summary(@PathVariable String id){return store.summary(id);}
     @GetMapping("/datasets/{id}/data") public Dataset data(@PathVariable String id){return store.dataset(id);}

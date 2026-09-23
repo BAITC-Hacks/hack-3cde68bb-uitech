@@ -1,0 +1,2494 @@
+{
+  "fixture_version": "1.0",
+  "dataset": {
+    "schema_version": "1.0",
+    "name": "09_split_customer_order",
+    "data_kind": "synthetic",
+    "timezone": "Asia/Almaty",
+    "suppliers": [
+      {
+        "supplier_id": "SUP_A",
+        "name": "Вымышленный поставщик A"
+      }
+    ],
+    "products": [
+      {
+        "product_id": "P1",
+        "supplier_id": "SUP_A",
+        "sku_1c": "000001_",
+        "supplier_article": "TEST-001",
+        "name": "Синтетический контрольный товар",
+        "stock_unit": "pcs",
+        "purchase_unit": "pcs",
+        "purchase_unit_factor": 1,
+        "category_id": "STANDARD",
+        "moq_purchase_qty": 0,
+        "pack_multiple_purchase_qty": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "sales_coverage": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "start_date": "2026-06-01",
+        "end_date_exclusive": "2026-07-01",
+        "complete": true
+      }
+    ],
+    "sales": [
+      {
+        "sale_id": "P1-2026-06-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-01",
+        "document_id": "DOC-P1-2026-06-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-02",
+        "document_id": "DOC-P1-2026-06-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-03",
+        "document_id": "DOC-P1-2026-06-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-04",
+        "document_id": "DOC-P1-2026-06-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-05",
+        "document_id": "DOC-P1-2026-06-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-06",
+        "document_id": "DOC-P1-2026-06-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-07",
+        "document_id": "DOC-P1-2026-06-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-08",
+        "document_id": "DOC-P1-2026-06-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-09",
+        "document_id": "DOC-P1-2026-06-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-10",
+        "document_id": "DOC-P1-2026-06-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-11",
+        "document_id": "DOC-P1-2026-06-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-12",
+        "document_id": "DOC-P1-2026-06-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-13",
+        "document_id": "DOC-P1-2026-06-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-14",
+        "document_id": "DOC-P1-2026-06-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-16",
+        "document_id": "DOC-P1-2026-06-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-17",
+        "document_id": "DOC-P1-2026-06-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-18",
+        "document_id": "DOC-P1-2026-06-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-19",
+        "document_id": "DOC-P1-2026-06-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-20",
+        "document_id": "DOC-P1-2026-06-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-21",
+        "document_id": "DOC-P1-2026-06-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-22",
+        "document_id": "DOC-P1-2026-06-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-23",
+        "document_id": "DOC-P1-2026-06-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-24",
+        "document_id": "DOC-P1-2026-06-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-25",
+        "document_id": "DOC-P1-2026-06-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-26",
+        "document_id": "DOC-P1-2026-06-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-27",
+        "document_id": "DOC-P1-2026-06-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-28",
+        "document_id": "DOC-P1-2026-06-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-29-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-29",
+        "document_id": "DOC-P1-2026-06-29-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-30-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-30",
+        "document_id": "DOC-P1-2026-06-30-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-000",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-000",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-001",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-001",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-002",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-002",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-003",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-003",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-004",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-004",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-005",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-005",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-006",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-006",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-007",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-007",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-008",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-008",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-009",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-009",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-010",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-010",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-011",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-011",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-012",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-012",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-013",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-013",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-014",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-014",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-015",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-015",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-016",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-016",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-017",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-017",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-018",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-018",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-019",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-019",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-020",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-020",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-021",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-021",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-022",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-022",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-023",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-023",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-024",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-024",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-025",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-025",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-026",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-026",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-027",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-027",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-028",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-028",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-029",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-029",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-030",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-030",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-031",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-031",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-032",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-032",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-033",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-033",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-034",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-034",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-035",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-035",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-036",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-036",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-037",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-037",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-038",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-038",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-039",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-039",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-040",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-040",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-041",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-041",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-042",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-042",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-043",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-043",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-044",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-044",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-045",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-045",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-046",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-046",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-047",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-047",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-048",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-048",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-049",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-049",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-050",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-050",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-051",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-051",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-052",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-052",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-053",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-053",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-054",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-054",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-055",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-055",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-056",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-056",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-057",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-057",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-058",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-058",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-059",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-059",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-060",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-060",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-061",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-061",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-062",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-062",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-063",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-063",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-064",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-064",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-065",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-065",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-066",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-066",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-067",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-067",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-068",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-068",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-069",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-069",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-070",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-070",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-071",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-071",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-072",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-072",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-073",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-073",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-074",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-074",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-075",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-075",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-076",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-076",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-077",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-077",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-078",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-078",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-079",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-079",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-080",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-080",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-081",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-081",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-082",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-082",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-083",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-083",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-084",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-084",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-085",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-085",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-086",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-086",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-087",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-087",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-088",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-088",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-089",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-089",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-090",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-090",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-091",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-091",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-092",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-092",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-093",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-093",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-094",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-094",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-095",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-095",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-096",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-096",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-097",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-097",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-098",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-098",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-split-099",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-split-099",
+        "customer_id": "CLIENT_PROJECT",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "inventory": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "as_of": "2026-07-01",
+        "free_stock_qty": 40,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "inbound": [
+      {
+        "shipment_id": "SHIP-1",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "quantity": 20,
+        "expected_date": "2026-07-08",
+        "status": "confirmed",
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "inbound_coverage": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "as_of": "2026-07-01",
+        "complete": true
+      }
+    ],
+    "availability": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "start_date": "2026-06-01",
+        "end_date_exclusive": "2026-07-01",
+        "state": "available",
+        "provenance": "synthetic",
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "seasonality_profiles": [
+      {
+        "profile_id": "FLAT-A",
+        "scope_type": "supplier",
+        "scope_id": "SUP_A",
+        "basis": "daily_rate",
+        "indices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "synthetic_v1",
+        "kind": "synthetic",
+        "role": "acceptance_test",
+        "file_name": null,
+        "note": "Полностью вымышленные данные; не данные Электрокомплекта."
+      }
+    ],
+    "issues": []
+  },
+  "calculation": {
+    "as_of": "2026-07-01",
+    "warehouse_id": "WH_TEST",
+    "supplier_ids": [],
+    "category_ids": [],
+    "history_start": "2026-06-01",
+    "supplier_policies": [
+      {
+        "supplier_id": "SUP_A",
+        "lead_time_days": 7,
+        "review_period_days": 7
+      }
+    ],
+    "category_policies": [
+      {
+        "category_id": "STANDARD",
+        "safety_days": 7,
+        "purchasing_allowed": true
+      }
+    ],
+    "forecast": {
+      "seasonality_mode": "provided",
+      "growth_mode": "manual",
+      "manual_growth_pct": 0,
+      "outlier_policy": "robust_orders_v1",
+      "stockout_mode": "confirmed_only"
+    },
+    "assumptions": []
+  },
+  "expected": {
+    "product_id": "P1",
+    "compare_to": "01_baseline",
+    "max_regular_forecast_relative_change": 0.05,
+    "anomalous_customer_id": "CLIENT_PROJECT",
+    "excluded_document_ids": [
+      "DOC-P1-2026-06-15-split-000",
+      "DOC-P1-2026-06-15-split-001",
+      "DOC-P1-2026-06-15-split-002",
+      "DOC-P1-2026-06-15-split-003",
+      "DOC-P1-2026-06-15-split-004",
+      "DOC-P1-2026-06-15-split-005",
+      "DOC-P1-2026-06-15-split-006",
+      "DOC-P1-2026-06-15-split-007",
+      "DOC-P1-2026-06-15-split-008",
+      "DOC-P1-2026-06-15-split-009",
+      "DOC-P1-2026-06-15-split-010",
+      "DOC-P1-2026-06-15-split-011",
+      "DOC-P1-2026-06-15-split-012",
+      "DOC-P1-2026-06-15-split-013",
+      "DOC-P1-2026-06-15-split-014",
+      "DOC-P1-2026-06-15-split-015",
+      "DOC-P1-2026-06-15-split-016",
+      "DOC-P1-2026-06-15-split-017",
+      "DOC-P1-2026-06-15-split-018",
+      "DOC-P1-2026-06-15-split-019",
+      "DOC-P1-2026-06-15-split-020",
+      "DOC-P1-2026-06-15-split-021",
+      "DOC-P1-2026-06-15-split-022",
+      "DOC-P1-2026-06-15-split-023",
+      "DOC-P1-2026-06-15-split-024",
+      "DOC-P1-2026-06-15-split-025",
+      "DOC-P1-2026-06-15-split-026",
+      "DOC-P1-2026-06-15-split-027",
+      "DOC-P1-2026-06-15-split-028",
+      "DOC-P1-2026-06-15-split-029",
+      "DOC-P1-2026-06-15-split-030",
+      "DOC-P1-2026-06-15-split-031",
+      "DOC-P1-2026-06-15-split-032",
+      "DOC-P1-2026-06-15-split-033",
+      "DOC-P1-2026-06-15-split-034",
+      "DOC-P1-2026-06-15-split-035",
+      "DOC-P1-2026-06-15-split-036",
+      "DOC-P1-2026-06-15-split-037",
+      "DOC-P1-2026-06-15-split-038",
+      "DOC-P1-2026-06-15-split-039",
+      "DOC-P1-2026-06-15-split-040",
+      "DOC-P1-2026-06-15-split-041",
+      "DOC-P1-2026-06-15-split-042",
+      "DOC-P1-2026-06-15-split-043",
+      "DOC-P1-2026-06-15-split-044",
+      "DOC-P1-2026-06-15-split-045",
+      "DOC-P1-2026-06-15-split-046",
+      "DOC-P1-2026-06-15-split-047",
+      "DOC-P1-2026-06-15-split-048",
+      "DOC-P1-2026-06-15-split-049",
+      "DOC-P1-2026-06-15-split-050",
+      "DOC-P1-2026-06-15-split-051",
+      "DOC-P1-2026-06-15-split-052",
+      "DOC-P1-2026-06-15-split-053",
+      "DOC-P1-2026-06-15-split-054",
+      "DOC-P1-2026-06-15-split-055",
+      "DOC-P1-2026-06-15-split-056",
+      "DOC-P1-2026-06-15-split-057",
+      "DOC-P1-2026-06-15-split-058",
+      "DOC-P1-2026-06-15-split-059",
+      "DOC-P1-2026-06-15-split-060",
+      "DOC-P1-2026-06-15-split-061",
+      "DOC-P1-2026-06-15-split-062",
+      "DOC-P1-2026-06-15-split-063",
+      "DOC-P1-2026-06-15-split-064",
+      "DOC-P1-2026-06-15-split-065",
+      "DOC-P1-2026-06-15-split-066",
+      "DOC-P1-2026-06-15-split-067",
+      "DOC-P1-2026-06-15-split-068",
+      "DOC-P1-2026-06-15-split-069",
+      "DOC-P1-2026-06-15-split-070",
+      "DOC-P1-2026-06-15-split-071",
+      "DOC-P1-2026-06-15-split-072",
+      "DOC-P1-2026-06-15-split-073",
+      "DOC-P1-2026-06-15-split-074",
+      "DOC-P1-2026-06-15-split-075",
+      "DOC-P1-2026-06-15-split-076",
+      "DOC-P1-2026-06-15-split-077",
+      "DOC-P1-2026-06-15-split-078",
+      "DOC-P1-2026-06-15-split-079",
+      "DOC-P1-2026-06-15-split-080",
+      "DOC-P1-2026-06-15-split-081",
+      "DOC-P1-2026-06-15-split-082",
+      "DOC-P1-2026-06-15-split-083",
+      "DOC-P1-2026-06-15-split-084",
+      "DOC-P1-2026-06-15-split-085",
+      "DOC-P1-2026-06-15-split-086",
+      "DOC-P1-2026-06-15-split-087",
+      "DOC-P1-2026-06-15-split-088",
+      "DOC-P1-2026-06-15-split-089",
+      "DOC-P1-2026-06-15-split-090",
+      "DOC-P1-2026-06-15-split-091",
+      "DOC-P1-2026-06-15-split-092",
+      "DOC-P1-2026-06-15-split-093",
+      "DOC-P1-2026-06-15-split-094",
+      "DOC-P1-2026-06-15-split-095",
+      "DOC-P1-2026-06-15-split-096",
+      "DOC-P1-2026-06-15-split-097",
+      "DOC-P1-2026-06-15-split-098",
+      "DOC-P1-2026-06-15-split-099"
+    ],
+    "preserve_document_ids": [
+      "DOC-P1-2026-06-15-regular"
+    ]
+  }
+}

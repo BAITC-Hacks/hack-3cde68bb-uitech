@@ -31,6 +31,9 @@ class ApiTest {
     ObjectNode approval(int revision){return mapper.createObjectNode().put("expected_revision",revision).put("approved_by","Test manager");}
     @Test void completeApprovalRevisionExportAndPersistenceFlow()throws Exception {
         ObjectNode c=create("01_baseline");String id=c.path("calculation_id").asText(),base="/api/v1/calculations/"+id;
+        JsonNode catalog=mapper.readTree(mvc.perform(get("/api/v1/datasets")).andExpect(status().isOk()).andReturn().getResponse().getContentAsByteArray());
+        assertTrue(catalog.isArray());assertTrue(java.util.stream.StreamSupport.stream(catalog.spliterator(),false).anyMatch(d->d.path("dataset_id").equals(c.get("dataset_id"))));
+        assertFalse(catalog.get(0).has("sales"));
         mvc.perform(get(base+"/export?supplier_id=SUP_A&format=csv&revision=1")).andExpect(status().isConflict());
         postJson(base+"/approve",approval(1),200);
         String csv=mvc.perform(get(base+"/export?supplier_id=SUP_A&format=csv&revision=1")).andExpect(status().isOk()).andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);assertTrue(csv.contains("\"150\";\"150\""));

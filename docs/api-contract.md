@@ -1,6 +1,6 @@
 # Контракт данных и API v1
 
-Статус: реализованный backend API v1. Frontend ещё не реализован. Поля и правила ниже — решения команды, а не дополнительные требования организаторов. Адаптер XLSX пока поддерживает только Systeme Electric.
+Статус: реализованный backend API v1, подключён frontend React / TypeScript. Поля и правила ниже — решения команды, а не дополнительные требования организаторов. Адаптер XLSX пока поддерживает только Systeme Electric.
 
 ## 1. Общие соглашения
 
@@ -123,6 +123,7 @@
 | Метод и путь | Запрос | Успех |
 |---|---|---|
 | `GET /health` | — | 200 `{status: "ok", api_version: "1.0"}` |
+| `GET /datasets` | — | 200, массив `DatasetSummary` сохранённых наборов, новые первыми |
 | `POST /datasets` | Нормализованный JSON | 201, `DatasetSummary` |
 | `POST /datasets/import` | Multipart: `manifest` JSON + файлы по именованным частям | 201, `DatasetSummary`; пока синхронный импорт |
 | `GET /datasets/{id}` | — | 200, `DatasetSummary` |

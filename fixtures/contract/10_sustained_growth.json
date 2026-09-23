@@ -1,0 +1,3258 @@
+{
+  "fixture_version": "1.0",
+  "dataset": {
+    "schema_version": "1.0",
+    "name": "10_sustained_growth",
+    "data_kind": "synthetic",
+    "timezone": "Asia/Almaty",
+    "suppliers": [
+      {
+        "supplier_id": "SUP_A",
+        "name": "Вымышленный поставщик A"
+      }
+    ],
+    "products": [
+      {
+        "product_id": "P1",
+        "supplier_id": "SUP_A",
+        "sku_1c": "000001_",
+        "supplier_article": "TEST-001",
+        "name": "Синтетический контрольный товар",
+        "stock_unit": "pcs",
+        "purchase_unit": "pcs",
+        "purchase_unit_factor": 1,
+        "category_id": "STANDARD",
+        "moq_purchase_qty": 0,
+        "pack_multiple_purchase_qty": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "sales_coverage": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "start_date": "2026-01-01",
+        "end_date_exclusive": "2026-07-01",
+        "complete": true
+      }
+    ],
+    "sales": [
+      {
+        "sale_id": "P1-2026-01-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-01",
+        "document_id": "DOC-P1-2026-01-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-02",
+        "document_id": "DOC-P1-2026-01-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-03",
+        "document_id": "DOC-P1-2026-01-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-04",
+        "document_id": "DOC-P1-2026-01-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-05",
+        "document_id": "DOC-P1-2026-01-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-06",
+        "document_id": "DOC-P1-2026-01-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-07",
+        "document_id": "DOC-P1-2026-01-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-08",
+        "document_id": "DOC-P1-2026-01-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-09",
+        "document_id": "DOC-P1-2026-01-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-10",
+        "document_id": "DOC-P1-2026-01-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-11",
+        "document_id": "DOC-P1-2026-01-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-12",
+        "document_id": "DOC-P1-2026-01-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-13",
+        "document_id": "DOC-P1-2026-01-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-14",
+        "document_id": "DOC-P1-2026-01-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-15",
+        "document_id": "DOC-P1-2026-01-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-16",
+        "document_id": "DOC-P1-2026-01-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-17",
+        "document_id": "DOC-P1-2026-01-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-18",
+        "document_id": "DOC-P1-2026-01-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-19",
+        "document_id": "DOC-P1-2026-01-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-20",
+        "document_id": "DOC-P1-2026-01-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-21",
+        "document_id": "DOC-P1-2026-01-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-22",
+        "document_id": "DOC-P1-2026-01-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-23",
+        "document_id": "DOC-P1-2026-01-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-24",
+        "document_id": "DOC-P1-2026-01-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-25",
+        "document_id": "DOC-P1-2026-01-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-26",
+        "document_id": "DOC-P1-2026-01-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-27",
+        "document_id": "DOC-P1-2026-01-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-28",
+        "document_id": "DOC-P1-2026-01-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-29-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-29",
+        "document_id": "DOC-P1-2026-01-29-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-30-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-30",
+        "document_id": "DOC-P1-2026-01-30-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-01-31-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-01-31",
+        "document_id": "DOC-P1-2026-01-31-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 5,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-01",
+        "document_id": "DOC-P1-2026-02-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-02",
+        "document_id": "DOC-P1-2026-02-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-03",
+        "document_id": "DOC-P1-2026-02-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-04",
+        "document_id": "DOC-P1-2026-02-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-05",
+        "document_id": "DOC-P1-2026-02-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-06",
+        "document_id": "DOC-P1-2026-02-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-07",
+        "document_id": "DOC-P1-2026-02-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-08",
+        "document_id": "DOC-P1-2026-02-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-09",
+        "document_id": "DOC-P1-2026-02-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-10",
+        "document_id": "DOC-P1-2026-02-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-11",
+        "document_id": "DOC-P1-2026-02-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-12",
+        "document_id": "DOC-P1-2026-02-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-13",
+        "document_id": "DOC-P1-2026-02-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-14",
+        "document_id": "DOC-P1-2026-02-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-15",
+        "document_id": "DOC-P1-2026-02-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-16",
+        "document_id": "DOC-P1-2026-02-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-17",
+        "document_id": "DOC-P1-2026-02-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-18",
+        "document_id": "DOC-P1-2026-02-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-19",
+        "document_id": "DOC-P1-2026-02-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-20",
+        "document_id": "DOC-P1-2026-02-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-21",
+        "document_id": "DOC-P1-2026-02-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-22",
+        "document_id": "DOC-P1-2026-02-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-23",
+        "document_id": "DOC-P1-2026-02-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-24",
+        "document_id": "DOC-P1-2026-02-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-25",
+        "document_id": "DOC-P1-2026-02-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-26",
+        "document_id": "DOC-P1-2026-02-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-27",
+        "document_id": "DOC-P1-2026-02-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-02-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-02-28",
+        "document_id": "DOC-P1-2026-02-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 6,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-01",
+        "document_id": "DOC-P1-2026-03-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-02",
+        "document_id": "DOC-P1-2026-03-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-03",
+        "document_id": "DOC-P1-2026-03-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-04",
+        "document_id": "DOC-P1-2026-03-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-05",
+        "document_id": "DOC-P1-2026-03-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-06",
+        "document_id": "DOC-P1-2026-03-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-07",
+        "document_id": "DOC-P1-2026-03-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-08",
+        "document_id": "DOC-P1-2026-03-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-09",
+        "document_id": "DOC-P1-2026-03-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-10",
+        "document_id": "DOC-P1-2026-03-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-11",
+        "document_id": "DOC-P1-2026-03-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-12",
+        "document_id": "DOC-P1-2026-03-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-13",
+        "document_id": "DOC-P1-2026-03-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-14",
+        "document_id": "DOC-P1-2026-03-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-15",
+        "document_id": "DOC-P1-2026-03-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-16",
+        "document_id": "DOC-P1-2026-03-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-17",
+        "document_id": "DOC-P1-2026-03-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-18",
+        "document_id": "DOC-P1-2026-03-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-19",
+        "document_id": "DOC-P1-2026-03-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-20",
+        "document_id": "DOC-P1-2026-03-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-21",
+        "document_id": "DOC-P1-2026-03-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-22",
+        "document_id": "DOC-P1-2026-03-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-23",
+        "document_id": "DOC-P1-2026-03-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-24",
+        "document_id": "DOC-P1-2026-03-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-25",
+        "document_id": "DOC-P1-2026-03-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-26",
+        "document_id": "DOC-P1-2026-03-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-27",
+        "document_id": "DOC-P1-2026-03-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-28",
+        "document_id": "DOC-P1-2026-03-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-29-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-29",
+        "document_id": "DOC-P1-2026-03-29-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-30-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-30",
+        "document_id": "DOC-P1-2026-03-30-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-03-31-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-03-31",
+        "document_id": "DOC-P1-2026-03-31-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 7,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-01",
+        "document_id": "DOC-P1-2026-04-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-02",
+        "document_id": "DOC-P1-2026-04-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-03",
+        "document_id": "DOC-P1-2026-04-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-04",
+        "document_id": "DOC-P1-2026-04-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-05",
+        "document_id": "DOC-P1-2026-04-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-06",
+        "document_id": "DOC-P1-2026-04-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-07",
+        "document_id": "DOC-P1-2026-04-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-08",
+        "document_id": "DOC-P1-2026-04-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-09",
+        "document_id": "DOC-P1-2026-04-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-10",
+        "document_id": "DOC-P1-2026-04-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-11",
+        "document_id": "DOC-P1-2026-04-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-12",
+        "document_id": "DOC-P1-2026-04-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-13",
+        "document_id": "DOC-P1-2026-04-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-14",
+        "document_id": "DOC-P1-2026-04-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-15",
+        "document_id": "DOC-P1-2026-04-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-16",
+        "document_id": "DOC-P1-2026-04-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-17",
+        "document_id": "DOC-P1-2026-04-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-18",
+        "document_id": "DOC-P1-2026-04-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-19",
+        "document_id": "DOC-P1-2026-04-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-20",
+        "document_id": "DOC-P1-2026-04-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-21",
+        "document_id": "DOC-P1-2026-04-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-22",
+        "document_id": "DOC-P1-2026-04-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-23",
+        "document_id": "DOC-P1-2026-04-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-24",
+        "document_id": "DOC-P1-2026-04-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-25",
+        "document_id": "DOC-P1-2026-04-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-26",
+        "document_id": "DOC-P1-2026-04-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-27",
+        "document_id": "DOC-P1-2026-04-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-28",
+        "document_id": "DOC-P1-2026-04-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-29-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-29",
+        "document_id": "DOC-P1-2026-04-29-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-04-30-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-04-30",
+        "document_id": "DOC-P1-2026-04-30-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 8,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-01",
+        "document_id": "DOC-P1-2026-05-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-02",
+        "document_id": "DOC-P1-2026-05-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-03",
+        "document_id": "DOC-P1-2026-05-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-04",
+        "document_id": "DOC-P1-2026-05-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-05",
+        "document_id": "DOC-P1-2026-05-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-06",
+        "document_id": "DOC-P1-2026-05-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-07",
+        "document_id": "DOC-P1-2026-05-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-08",
+        "document_id": "DOC-P1-2026-05-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-09",
+        "document_id": "DOC-P1-2026-05-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-10",
+        "document_id": "DOC-P1-2026-05-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-11",
+        "document_id": "DOC-P1-2026-05-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-12",
+        "document_id": "DOC-P1-2026-05-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-13",
+        "document_id": "DOC-P1-2026-05-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-14",
+        "document_id": "DOC-P1-2026-05-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-15",
+        "document_id": "DOC-P1-2026-05-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-16",
+        "document_id": "DOC-P1-2026-05-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-17",
+        "document_id": "DOC-P1-2026-05-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-18",
+        "document_id": "DOC-P1-2026-05-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-19",
+        "document_id": "DOC-P1-2026-05-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-20",
+        "document_id": "DOC-P1-2026-05-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-21",
+        "document_id": "DOC-P1-2026-05-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-22",
+        "document_id": "DOC-P1-2026-05-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-23",
+        "document_id": "DOC-P1-2026-05-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-24",
+        "document_id": "DOC-P1-2026-05-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-25",
+        "document_id": "DOC-P1-2026-05-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-26",
+        "document_id": "DOC-P1-2026-05-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-27",
+        "document_id": "DOC-P1-2026-05-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-28",
+        "document_id": "DOC-P1-2026-05-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-29-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-29",
+        "document_id": "DOC-P1-2026-05-29-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-30-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-30",
+        "document_id": "DOC-P1-2026-05-30-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-05-31-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-05-31",
+        "document_id": "DOC-P1-2026-05-31-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 9,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-01-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-01",
+        "document_id": "DOC-P1-2026-06-01-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-02-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-02",
+        "document_id": "DOC-P1-2026-06-02-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-03-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-03",
+        "document_id": "DOC-P1-2026-06-03-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-04-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-04",
+        "document_id": "DOC-P1-2026-06-04-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-05-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-05",
+        "document_id": "DOC-P1-2026-06-05-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-06-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-06",
+        "document_id": "DOC-P1-2026-06-06-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-07-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-07",
+        "document_id": "DOC-P1-2026-06-07-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-08-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-08",
+        "document_id": "DOC-P1-2026-06-08-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-09-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-09",
+        "document_id": "DOC-P1-2026-06-09-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-10-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-10",
+        "document_id": "DOC-P1-2026-06-10-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-11-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-11",
+        "document_id": "DOC-P1-2026-06-11-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-12-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-12",
+        "document_id": "DOC-P1-2026-06-12-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-13-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-13",
+        "document_id": "DOC-P1-2026-06-13-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-14-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-14",
+        "document_id": "DOC-P1-2026-06-14-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-15-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-15",
+        "document_id": "DOC-P1-2026-06-15-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-16-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-16",
+        "document_id": "DOC-P1-2026-06-16-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-17-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-17",
+        "document_id": "DOC-P1-2026-06-17-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-18-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-18",
+        "document_id": "DOC-P1-2026-06-18-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-19-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-19",
+        "document_id": "DOC-P1-2026-06-19-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-20-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-20",
+        "document_id": "DOC-P1-2026-06-20-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-21-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-21",
+        "document_id": "DOC-P1-2026-06-21-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-22-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-22",
+        "document_id": "DOC-P1-2026-06-22-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-23-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-23",
+        "document_id": "DOC-P1-2026-06-23-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-24-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-24",
+        "document_id": "DOC-P1-2026-06-24-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-25-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-25",
+        "document_id": "DOC-P1-2026-06-25-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-26-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-26",
+        "document_id": "DOC-P1-2026-06-26-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-27-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-27",
+        "document_id": "DOC-P1-2026-06-27-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-28-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-28",
+        "document_id": "DOC-P1-2026-06-28-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-29-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-29",
+        "document_id": "DOC-P1-2026-06-29-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      },
+      {
+        "sale_id": "P1-2026-06-30-regular",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "date": "2026-06-30",
+        "document_id": "DOC-P1-2026-06-30-regular",
+        "customer_id": "CLIENT_REGULAR",
+        "operation_type": "sale",
+        "quantity": 10,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "inventory": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "as_of": "2026-07-01",
+        "free_stock_qty": 40,
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "inbound": [
+      {
+        "shipment_id": "SHIP-1",
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "quantity": 20,
+        "expected_date": "2026-07-08",
+        "status": "confirmed",
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "inbound_coverage": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "as_of": "2026-07-01",
+        "complete": true
+      }
+    ],
+    "availability": [
+      {
+        "product_id": "P1",
+        "warehouse_id": "WH_TEST",
+        "start_date": "2026-01-01",
+        "end_date_exclusive": "2026-07-01",
+        "state": "available",
+        "provenance": "synthetic",
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "seasonality_profiles": [
+      {
+        "profile_id": "FLAT-A",
+        "scope_type": "supplier",
+        "scope_id": "SUP_A",
+        "basis": "daily_rate",
+        "indices": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "source_refs": [
+          {
+            "source_id": "synthetic_v1",
+            "sheet": null,
+            "cell_range": null
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "source_id": "synthetic_v1",
+        "kind": "synthetic",
+        "role": "acceptance_test",
+        "file_name": null,
+        "note": "Полностью вымышленные данные; не данные Электрокомплекта."
+      }
+    ],
+    "issues": []
+  },
+  "calculation": {
+    "as_of": "2026-07-01",
+    "warehouse_id": "WH_TEST",
+    "supplier_ids": [],
+    "category_ids": [],
+    "history_start": "2026-01-01",
+    "supplier_policies": [
+      {
+        "supplier_id": "SUP_A",
+        "lead_time_days": 7,
+        "review_period_days": 7
+      }
+    ],
+    "category_policies": [
+      {
+        "category_id": "STANDARD",
+        "safety_days": 7,
+        "purchasing_allowed": true
+      }
+    ],
+    "forecast": {
+      "seasonality_mode": "provided",
+      "growth_mode": "historical",
+      "manual_growth_pct": null,
+      "outlier_policy": "robust_orders_v1",
+      "stockout_mode": "confirmed_only"
+    },
+    "assumptions": []
+  },
+  "expected": {
+    "product_id": "P1",
+    "assertions": [
+      "Forecast mean daily rate is at least 10 and exceeds full-history mean daily sales.",
+      "The sustained multi-month rise is not excluded as a one-off event."
+    ],
+    "excluded_document_ids": []
+  }
+}
